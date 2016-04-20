@@ -50,7 +50,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         firstSelect = wSelect.createSelect(
             searchformData.selects.filter(function (select) {
-                return select.name === 'type';
+                return select.name === 'main-filter';
             })[0]
         );
         row.querySelectorAll('div.col')[0].appendChild(firstSelect);

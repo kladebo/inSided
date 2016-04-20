@@ -21,19 +21,13 @@ define(['app/print', 'app/helpers'], function (print, helper) {
             div.classList.remove('focus');
         });
 
-        //input.id = id;
+        // attoach calendar
         if (item.type === 'calendar') {
             div.id = 'calendar' + id;
             div.classList.add('calendar');
             require(['epoch'], function (epoch) {
-                var date,
-                    calendar = new epoch.Epoch('calendar' + id, 'popup', input, false);
-                date = new Date();
-                //input.value = date.dateFormat('d-M-Y');
+                var calendar = new epoch.Epoch('calendar' + id, 'popup', input, false);
                 input.setAttribute('placeholder', item.title);
-//                helper.forEach(calendar.calendar.querySelectorAll('.wkhead'), function (item) {
-//                    item.style.display = 'none';
-//                });
 
                 window.addEventListener('resize', function () {
                     calendar.updatePos(input);

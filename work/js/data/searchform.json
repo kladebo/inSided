@@ -1,7 +1,7 @@
 {
     "selects": [{
         "id": 0,
-        "name": "type",
+        "name": "main-filter",
         "title": "Comments",
         "initial": -1,
         "options": [{
