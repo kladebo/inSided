@@ -3,6 +3,14 @@ inSided Coding Test
 
 <h2>Hello!</h2>
 <p>The main goal for me within this project was not to use any html-frameworks. I could easily have been include Bootstrap but I wanted to show how widgets can be made with some simple coding and css. I had a lot of fun with this assignment and I really liked the idea. Unfortunately 'time flies'. Now the time has come to turn this assignment in. I hope you will enjoy reviewing my code and like it!</p>
+
+<h3>Install</h3>
+<ul>
+    <li>Clone this repository</li>
+    <li>run NPM install</li>
+    <li>run grunt</li>
+    <li>load index.html from a server e.g. localhost</li>
+</ul>
 <h3>Known issues:</h3>
 <h4>number 7</h4>
 <p>I have tried to complete all the issues but I have failed with number 7. I couldn't find the relation within the 'data' between the filters and the filter-buttons.</p>

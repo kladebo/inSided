@@ -124,8 +124,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('css', ['clean:css', 'sass', 'postcss', 'copy:css']);
     grunt.registerTask('script', ['jshint', 'requirejs']);
-    grunt.registerTask('default', ['script', 'css']);
-    grunt.registerTask('all', ['script', 'jsonmin', 'css' ,'copy:js', 'copy:jslib']);
+    grunt.registerTask('default', ['script', 'jsonmin', 'css' ,'copy:js', 'copy:jslib']);
 
 
 };
