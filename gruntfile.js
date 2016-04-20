@@ -99,7 +99,19 @@ module.exports = function (grunt) {
                 dest: 'css',       // destination folder
                 expand: true       // required when using cwd
             },
-        },
+            js: {
+                cwd: 'work/js',   // set working folder / root to copy
+                src: '*.js',       // copy all files and subfolders
+                dest: 'js',       // destination folder
+                expand: true       // required when using cwd
+            },
+            jslib: {
+                cwd: 'work/js/lib',   // set working folder / root to copy
+                src: '**/*',       // copy all files and subfolders
+                dest: 'js/lib',       // destination folder
+                expand: true       // required when using cwd
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -113,7 +125,7 @@ module.exports = function (grunt) {
     grunt.registerTask('css', ['clean:css', 'sass', 'postcss', 'copy:css']);
     grunt.registerTask('script', ['jshint', 'requirejs']);
     grunt.registerTask('default', ['script', 'css']);
-    grunt.registerTask('all', ['script', 'jsonmin', 'css']);
+    grunt.registerTask('all', ['script', 'jsonmin', 'css' ,'copy:js', 'copy:jslib']);
 
 
 };
