@@ -15,12 +15,12 @@
         paths: {
             main: ['app/main.min', 'app/main'],
             domReady: ['//cdnjs.cloudflare.com/ajax/libs/require-domReady/2.0.1/domReady.min', 'lib/domReady.min'],
-            //promise: ['//cdnjs.cloudflare.com/ajax/libs/es6-promise/3.2.1/es6-promise.min', 'lib/es6-promise.min'],
+            promise: ['//cdnjs.cloudflare.com/ajax/libs/es6-promise/3.2.1/es6-promise.min', 'lib/es6-promise.min'],
             epoch: ['lib/epoch_classes']
         }
     });
 
     // Start loading the main app file. Put all of
     // your application logic in there.
-    requirejs(['main', 'domReady', 'epoch']);
+    requirejs(['main', 'domReady', 'promise', 'epoch']);
 }());
