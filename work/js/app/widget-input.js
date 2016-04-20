@@ -21,13 +21,25 @@ define(['app/print', 'app/helpers'], function (print, helper) {
             div.classList.remove('focus');
         });
 
-        // attoach calendar
+        // attach calendar
         if (item.type === 'calendar') {
             div.id = 'calendar' + id;
             div.classList.add('calendar');
             require(['epoch'], function (epoch) {
                 var calendar = new epoch.Epoch('calendar' + id, 'popup', input, false);
                 input.setAttribute('placeholder', item.title);
+
+                // special listener for deleteButton
+                helper.forEach(calendar.calendar.querySelectorAll('table.calcells td'), function (cell) {
+                    cell.addEventListener('click', function () {
+                        var event = new UIEvent('change', {
+                            "view": window,
+                            "bubbles": true,
+                            "cancelable": true
+                        });
+                        input.dispatchEvent(event);
+                    }, true);
+                });
 
                 window.addEventListener('resize', function () {
                     calendar.updatePos(input);

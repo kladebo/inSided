@@ -63,51 +63,9 @@ define(function (require) {
                 console.log("getJSON failed for", url, err);
                 throw err;
             });
-        },
-
-        // props: css/attr
-        createElement: function (tagName, props) {
-            // tagname: domElement to create
-            var i,
-                t,
-                obj = document.createElement(tagName);
-            if (props) {
-                if (props.css) {
-                    t = [];
-                    for (i in props.css) {
-                        t.push(i + ':' + props.css[i]);
-                    }
-                    obj.setAttribute('style', t.join(';'));
-                }
-                if (props.attr) {
-                    for (i in props.attr) {
-                        obj.setAttribute(i, props.attr[i]);
-                    }
-                }
-            }
-            return obj;
-        },
-        scrollIntoView: function (obj) {
-            obj.scrollIntoView(true);
-            if (window.innerWidth > 768) {
-                //var scrollMax = document.body.scrollTop - 110;
-                var item = document.body.scrollTop ? document.body : document.documentElement,
-                    scrolled,
-                    scrollMax = item.scrollTop - 80;
-
-                (function scroll() {
-                    //scrolled = document.documentElement.scrollTop || document.body.scrollTop;
-                    console.log(item.scrollTop);
-                    if (item.scrollTop === 0) {
-                        return;
-                    }
-                    item.scrollTop -= 10;
-                    if (item.scrollTop > scrollMax) {
-                        setTimeout(scroll, 20);
-                    }
-                }());
-            }
         }
+
+        
     };
 
 });

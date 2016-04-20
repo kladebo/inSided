@@ -9,7 +9,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         insertFilterRow,
         insertCheckboxes,
         initForm,
-        insertDeleteButton;
+        insertDeleteButton,
+        updateDeleteButton;
 
     createRow = function () {
         var div = document.createElement('div'),
@@ -32,14 +33,6 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         box4.className = 'col';
 
         return div;
-    };
-
-    removeCalendar = function (row) {
-        var calendar = row.querySelector('div.calendar');
-        if (calendar) {
-            calendar = document.getElementById(calendar.id + '_calendar');
-            calendar.parentElement.removeChild(calendar);
-        }
     };
 
     insertFilterRow = function () {
@@ -67,14 +60,15 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         helper.forEach(firstSelect.querySelectorAll('li'), function (li, index) {
             li.addEventListener('click', function () {
-                //print(li.textContent + ' - ' + index);
                 removeCalendar(row);
                 // create select2
                 var secondCel = row.querySelectorAll('div.col')[1],
                     thirdCel = row.querySelectorAll('div.col')[2],
                     fourthCel = row.querySelectorAll('div.col')[3],
                     secondSelect,
-                    input;
+                    input,
+                    formObj,
+                    button;
 
                 secondCel.innerHTML = '';
                 thirdCel.innerHTML = '';
@@ -87,6 +81,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                 );
                 secondCel.appendChild(secondSelect);
 
+                button = insertDeleteButton(row);
+
                 // create select3
                 if (li.getAttribute('data-value') === 'date-registered') {
                     input = wInput.createInput(
@@ -95,9 +91,35 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                         })[0]
                     );
                     thirdCel.appendChild(input);
-                    fourthCel.appendChild(insertDeleteButton(row));
+
+                    // attach change to update the deleteButton
+                    fourthCel.appendChild(button);
+                    formObj = input.querySelector('input');
+                    formObj.addEventListener('change', function () {
+                        updateDeleteButton(input, button);
+                    });
+                    formObj.addEventListener('input', function () {
+                        updateDeleteButton(input, button);
+                    });
+
                 } else if (li.getAttribute('data-value') === 'group-post') {
-                    thirdCel.appendChild(insertDeleteButton(row));
+
+                    // attach change to update the deleteButton
+                    thirdCel.appendChild(button);
+                    helper.forEach(secondSelect.querySelectorAll('li'), function (li) {
+                        li.addEventListener('click', function () {
+                            updateDeleteButton(secondSelect, button);
+                        });
+                    });
+                    if (secondSelect.querySelector('.multiple-menu')) {
+                        helper.forEach(secondSelect.querySelectorAll('.multiple-menu span'), function (span){
+                            span.addEventListener('click', function (){
+                                //print('klaasss');
+                                 updateDeleteButton(secondSelect, button);
+                            }, true);
+                        });
+                    }
+
                 }
             });
         });
@@ -129,12 +151,37 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         frag.appendChild(div);
 
         document.querySelector('div#checkboxes').appendChild(frag);
-        print(frag);
+    };
+
+    removeCalendar = function (row) {
+        var calendar = row.querySelector('div.calendar');
+        if (calendar) {
+            calendar = document.getElementById(calendar.id + '_calendar');
+            calendar.parentElement.removeChild(calendar);
+        }
+    };
+
+    updateDeleteButton = function (obj, button) {
+        var value = [],
+            css = obj.classList;
+        if (css.contains('w-input')) {
+            value.push(obj.querySelector('input').value);
+        } else if (css.contains('w-select')) {
+            helper.forEach(obj.querySelectorAll('li.active'), function (item) {
+                value.push(item.getAttribute('data-value'));
+            });
+        }
+        print('"' + value.join('') + '"');
+        if (value.join('') !== '') {
+            button.classList.remove('hidden');
+        } else {
+            button.classList.add('hidden');
+        }
     };
 
     insertDeleteButton = function (row) {
         var button = document.createElement('button');
-        button.className = 'remove-row';
+        button.className = 'remove-row hidden';
         button.addEventListener('click', function () {
             removeCalendar(row);
 
@@ -165,7 +212,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
     };
 
     return {
-        initForm: initForm
+        initForm: initForm,
+        updateDeleteButton: updateDeleteButton
     };
 
 });
