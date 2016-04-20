@@ -84,7 +84,7 @@ table.calendar {
         border-collapse: collapse;
         td {
             border: $border;
-            padding: .5em;
+            padding: .6em;
             &.username {
                 img {
                     margin-right: .5em;
@@ -95,21 +95,23 @@ table.calendar {
                     text-decoration: none;
                 }
             }
-            &.center{
+            &.center {
                 text-align: center;
             }
         }
         th {
             border: $border;
-            padding: .5em;
+            padding: .6em;
             text-align: left;
+        }
+        tr {
+            input {
+                margin-right: .5em;
+                vertical-align: middle;
+            }
         }
         .result-body {
             tr {
-                input {
-                    margin-right: .5em;
-                    vertical-align: middle;
-                }
                 background: white;
                 &:nth-child(even) {
                     background: rgba($primary-black, .01);
@@ -157,11 +159,11 @@ table.calendar {
             }
         }
     }
-    .result-admin{
+    .result-admin {
         .w-select {
             width: 11em;
         }
-        .admin-export{
+        .admin-export {
             float: right;
         }
     }
