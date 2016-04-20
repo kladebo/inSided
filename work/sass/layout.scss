@@ -1,0 +1,60 @@
+@import 'a-config';
+@import 'boilerplate';
+//
+$button-add-color:#98CA32;
+$button-accent-color:#19B4F6;
+$button-cancel-color:#f4442a;
+//
+html {
+    color: $primary-text-color;
+    font-family: $font-stack;
+    font-size: 1em;
+    line-height: 1.8;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+body {
+    background-color: rgba($primary-black, .05);
+}
+main {
+    margin-bottom: 10em;
+    button {
+        border: $border;
+        border-radius: .2em;
+        padding: .4em .4em;
+        margin-right: .25em;
+        margin-bottom: .25em;
+    }
+    button.add {
+        background: $button-add-color;
+        border: .1em solid darken($button-add-color, 15);
+        color: white;
+    }
+    button.accent {
+        background: $button-accent-color;
+        border: .1em solid darken($button-accent-color, 15); //#1596C7;
+        color: white;
+    }
+    button.cancel {
+        background: transparent;
+        border-color: transparent;
+        color: $button-cancel-color;
+    }
+    button.remove-row {
+        background: $button-cancel-color;
+        border-color: darken($button-cancel-color, 20);
+        color: darken($button-cancel-color, 30);
+        cursor: pointer;
+        &:before {
+            content: '\2715';
+            line-height: 0;
+            padding: 0 .1em;
+        }
+    }
+}
+//
+@import 'widget-checkbox';
+@import 'widget-select';
+@import 'widget-input';
+// overrules some widget props 
+@import 'searchform';

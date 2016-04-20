@@ -1,0 +1,19 @@
+@import 'a-config';
+//
+.w-checkbox {
+    display: block;
+    margin-bottom: .3em;
+    white-space: nowrap;
+    //width: 33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    label {
+        //        display: inline-block;
+        white-space: nowrap;
+    }
+    input {
+//        margin-top: .1em;
+        margin-right: .3em;
+        vertical-align: bottom;
+    }
+}

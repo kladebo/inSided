@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Front-end assignment</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
+    
+    <link rel="stylesheet" href="css/epoch_styles.css" />
+    <link rel="stylesheet" href="css/layout.min.css" />
+
+    <script data-main="js/app.js" src="js/require.js"></script>
+
+</head>
+
+<body id="home">
+    <header></header>
+    <main class="clearfix">
+        <div id="search" class="search">
+            <div class="filter" id="selectfilters">
+                <div class="header"><b>Advanced search</b></div>
+                <div>
+                    <button id="addRow" class="add">Add row</button>
+                </div>
+            </div>
+            <div class="checkbox-box" id="checkboxes">
+                <div class="header"><b>Columns</b></div>
+            </div>
+            <div class="submit">
+                <button class="accent">Update</button>
+                <button class="cancel">Cancel</button>
+            </div>
+        </div>
+        
+        <div id="result" class="result"></div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+$font-stack: Helvetica,
+Arial,
+sans-serif;
+$primary-text-color: #333;
+$primary-black: #222;
+$accent-color: #8a2be2;
+$accent-color-two: #ffb100;
+//
+$border: .1em solid rgba($primary-black, .5);
+//
+$widget-dropdown-bgcolor: #fff;
+$widget-active-color: #fff;
+$widget-focus-color: #29B0F4;
+$widget-disabled-color: rgba($primary-black, .2);
+//
+@mixin widget-base() {
+    background: linear-gradient(rgba(#fff, 1), rgba(#fff, 0));
+    border: .1em solid rgba($primary-black, .3);
+    border-radius: .2em;
+    box-shadow: .1em .1em .3em 0 rgba($primary-black, .1);
+    display: inline-block;
+    margin-right: .25em;
+    margin-bottom: .25em;
+    position: relative;
+    text-align: left;
+    vertical-align: top;
+    max-width: 200px;
+}
+@mixin widget-focus() {
+    background: $widget-active-color;
+    border-color: $widget-focus-color;
+    box-shadow: .1em .1em .3em 0 rgba($widget-focus-color, .6);
+    // removes blue line on chrome
+    outline: none;
+}

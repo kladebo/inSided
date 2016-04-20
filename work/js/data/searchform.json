@@ -1,0 +1,212 @@
+{
+    "selects": [{
+        "id": 0,
+        "name": "type",
+        "title": "Comments",
+        "initial": -1,
+        "options": [{
+            "id": 0,
+            "value": "date-registered",
+            "text": "Registration date"
+        }, {
+            "id": 1,
+            "value": "group-post",
+            "text": "Usergroup"
+        }]
+    }, {
+        "id": 1,
+        "name": "date-posted",
+        "title": "Date posted",
+        "initial": 0,
+        "options": [{
+            "id": 0,
+            "value": ">",
+            "text": "is greater than"
+        }, {
+            "id": 1,
+            "value": "<",
+            "text": "is less than"
+        }, {
+            "id": 2,
+            "value": "===",
+            "text": "is equal to"
+        }]
+    }, {
+        "id": 2,
+        "name": "date-registered",
+        "title": "Registration date",
+        "initial": 0,
+        "options": [{
+            "id": 0,
+            "value": "<",
+            "text": "before"
+        }, {
+            "id": 1,
+            "value": ">",
+            "text": "after"
+        }, {
+            "id": 2,
+            "value": "===",
+            "text": "on"
+        }]
+    }, {
+        "id": 3,
+        "name": "group-post",
+        "type": "multiple",
+        "title": "Select one or more options",
+        "initial": -1,
+        "groups": [{
+            "id": 0,
+            "text": "Group 1",
+            "options": [{
+                "id": 0,
+                "value": 1,
+                "text": "Option #1 for group 1"
+            }, {
+                "id": 1,
+                "value": 2,
+                "text": "Option #2 for group 1"
+            }, {
+                "id": 2,
+                "value": 3,
+                "text": "Option #3 for group 1"
+            }]
+        }, {
+            "id": 1,
+            "text": "Group 2",
+            "options": [{
+                "id": 3,
+                "value": 4,
+                "text": "Forum"
+            }, {
+                "id": 4,
+                "value": 5,
+                "text": "Ipsum"
+            }, {
+                "id": 5,
+                "value": 6,
+                "text": "Dorol"
+            }]
+        }, {
+            "id": 2,
+            "text": "Group 3",
+            "options": [{
+                "id": 6,
+                "value": 7,
+                "text": "he"
+            }, {
+                "id": 7,
+                "value": 8,
+                "text": "ha"
+            }, {
+                "id": 8,
+                "value": 9,
+                "text": "ho"
+            }]
+        }]
+    }],
+    "inputs": [{
+        "id": 0,
+        "name": "calendar",
+        "type": "calendar",
+        "title": "click to use the calendar..."
+    }],
+    "checkboxes": {
+        "groups": [{
+            "id": 1,
+            "name": "Account",
+            "check": [{
+                "id": 0,
+                "text": "Usertitle"
+            }, {
+                "id": 1,
+                "checked": "checked",
+                "text": "Comments"
+            }, {
+                "id": 2,
+                "text": "Deleted comments"
+            }, {
+                "id": 3,
+                "text": "Deleted topics"
+            }, {
+                "id": 4,
+                "text": "Questions solved"
+            }, {
+                "id": 5,
+                "checked": "checked",
+                "text": "Topics"
+            }, {
+                "id": 6,
+                "checked": "checked",
+                "text": "Usergroup"
+            }, {
+                "id": 7,
+                "text": "Secundary usergroup"
+            }, {
+                "id": 8,
+                "checked": "checked",
+                "text": "Registration date"
+            }, {
+                "id": 9,
+                "checked": "checked",
+                "text": "Last login"
+            }, {
+                "id": 10,
+                "text": "Logins"
+            }, {
+                "id": 11,
+                "checked": "checked",
+                "text": "Last comment"
+            }, {
+                "id": 12,
+                "text": "Email"
+            }, {
+                "id": 13,
+                "text": "SSO-ID"
+            }, {
+                "id": 14,
+                "text": "IP-address"
+            }]
+        }, {
+            "id": 2,
+            "name": "User",
+            "check": [{
+                "id": 0,
+                "text": "Gender"
+            }, {
+                "id": 1,
+                "text": "Date of Birth"
+            }, {
+                "id": 2,
+                "text": "Location"
+            }, {
+                "id": 3,
+                "text": "Interest"
+            }, {
+                "id": 4,
+                "text": "Profession"
+            }, {
+                "id": 5,
+                "text": "Signature"
+            }, {
+                "id": 6,
+                "text": "Notes"
+            }, {
+                "id": 7,
+                "text": "Badges"
+            }, {
+                "id": 8,
+                "text": "Reputation received"
+            }, {
+                "id": 9,
+                "text": "Reputation given"
+            }, {
+                "id": 10,
+                "text": "Followers"
+            }, {
+                "id": 11,
+                "text": "Following"
+            }]
+        }]
+    }
+}

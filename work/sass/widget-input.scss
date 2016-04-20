@@ -1,0 +1,18 @@
+@import 'a-config';
+//
+.w-input {
+    @include widget-base;
+    //padding: .4em 1em .4em .4em;
+    &.small {
+        width: 3em;
+    }
+    &.focus{
+        @include widget-focus;
+    }
+    input {
+        background-color: transparent;
+        border: 0;
+        padding: .4em;
+        width: 100%;
+    }
+}
