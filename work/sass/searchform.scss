@@ -8,21 +8,20 @@ table.calendar {
     //line-height: normal;
     margin-top: .5em;
     input,
-    select{
+    select {
         font-size: $calendar-font-weight;
         line-height: normal;
     }
-    td{
+    td {
         font-size: $calendar-font-weight;
         text-align: center;
     }
-    .curdate{
+    .curdate {
         border-color: $widget-focus-color;
     }
-    .wkhead{
+    .wkhead {
         display: none;
     }
-    
 }
 .result,
 .search {
@@ -102,27 +101,29 @@ table.calendar {
             padding: .5em;
             text-align: left;
         }
-        tr {
-            input {
-                margin-right: .5em;
-                vertical-align: middle;
-            }
-            background: white;
-            &:nth-child(even) {
-                background: rgba($primary-black, .01);
-            }
-            &.active {
-                background: lighten($widget-focus-color, 20);
-            }
-            &:hover td {
-                background: lighten($widget-focus-color, 40);
-            }
-            &.active:hover td {
-                background: lighten($widget-focus-color, 30);
+        .result-body {
+            tr {
+                input {
+                    margin-right: .5em;
+                    vertical-align: middle;
+                }
+                background: white;
+                &:nth-child(even) {
+                    background: rgba($primary-black, .01);
+                }
+                &.active {
+                    background: lighten($widget-focus-color, 20);
+                }
+                &:hover {
+                    background: lighten($widget-focus-color, 40);
+                }
+                &.active:hover {
+                    background: lighten($widget-focus-color, 30);
+                }
             }
         }
     }
-    .result-wrapper {
+    .result-view-wrapper {
         margin: .5em 0;
     }
     .result-header-wrapper,
@@ -131,7 +132,7 @@ table.calendar {
         //position: relative;
         > div {
             display: inline-block;
-            width: 50%;
+            max-width: 50%;
         }
     }
     .result-header-wrapper {}

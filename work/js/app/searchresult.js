@@ -30,8 +30,8 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
     };
 
     updateAdminWrapper = function () {
-        var wrapper = document.querySelector('.result-admin'),
-            result = document.getElementById('result-body'),
+        var wrapper = document.querySelector('.admin-body'),
+            result = document.querySelector('.result-body'),
             counter;
 
         counter = -1;
@@ -69,7 +69,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                 input.type = 'checkbox';
                 input.addEventListener('change', function () {
                     print(this.checked);
-                    var result = document.getElementById('result-body'),
+                    var result = document.querySelector('.result-body'),
                         active = this.checked;
 
                     helper.forEach(result.querySelectorAll('tr'), function (item) {
@@ -92,7 +92,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             a;
 
         frag.appendChild(tbody);
-        tbody.id = 'result-body';
+        tbody.className = 'result-body';
         helper.forEach(userData.users, function (user) {
             tr = document.createElement('tr');
             tr.addEventListener('click', function () {
@@ -132,6 +132,16 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                 }
             });
         });
+        
+        tbody = document.createElement('tbody');
+        frag.appendChild(tbody);
+        tbody.className = 'admin-body invisible';
+        tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        td = document.createElement('td');
+        tr.appendChild(td);
+        td.setAttribute('colspan', userData.headers.length);
+        td.appendChild(createResultAdminWrapper());
 
         return frag;
     };
@@ -281,7 +291,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                 }]
         };
         frag.appendChild(div);
-        div.className = 'result-admin invisible';
+        div.className = 'result-admin';
         helper.forEach(data.select, function (item) {
             div.appendChild(wSelect.createSelect(item));
         });
@@ -342,7 +352,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div'),
             table = document.createElement('table');
         frag.appendChild(div);
-        div.className = 'result-wrapper';
+        div.className = 'result-view-wrapper';
         div.appendChild(table);
         table.appendChild(createTableHeader());
         table.appendChild(createTableRows());
@@ -358,8 +368,6 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             result.appendChild(createResultHeader());
 
             result.appendChild(createResultTable());
-
-            result.appendChild(createResultAdminWrapper());
 
             result.appendChild(createResultFooter());
 
