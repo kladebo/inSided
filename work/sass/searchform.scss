@@ -95,6 +95,9 @@ table.calendar {
                     text-decoration: none;
                 }
             }
+            &.center{
+                text-align: center;
+            }
         }
         th {
             border: $border;
@@ -128,8 +131,6 @@ table.calendar {
     }
     .result-header-wrapper,
     .result-footer-wrapper {
-        background: yellow;
-        //position: relative;
         > div {
             display: inline-block;
             max-width: 50%;
@@ -139,6 +140,7 @@ table.calendar {
     .result-footer-wrapper {}
     .result-navigation {
         text-align: right;
+        float: right;
         .divider {
             display: inline-block;
             padding: 0 .3em;
@@ -147,12 +149,20 @@ table.calendar {
             margin-left: .4em;
         }
         button {
-            background-color: transparent;
-            border-color: transparent;
+            //background-color: transparent;
+            //border-color: transparent;
             color: $widget-focus-color;
             &:disabled {
                 color: $widget-disabled-color;
             }
+        }
+    }
+    .result-admin{
+        .w-select {
+            width: 11em;
+        }
+        .admin-export{
+            float: right;
         }
     }
 }

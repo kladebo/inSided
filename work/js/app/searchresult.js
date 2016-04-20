@@ -11,6 +11,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         initResult,
         createResultAdminWrapper,
         createResultAdmin,
+        createAdminExport,
         createResultHeader,
         createResultFooter,
         createNavigation,
@@ -129,6 +130,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                     });
                 } else {
                     td.appendChild(document.createTextNode(user[item.field]));
+                    td.classList.add('center');
                 }
             });
         });
@@ -191,12 +193,14 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'First';
+        button.className = 'transparent';
         button.disabled = true;
         div.appendChild(divider());
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = '<<';
+        button.className = 'transparent';
         button.disabled = true;
         div.appendChild(divider());
 
@@ -217,11 +221,13 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = '>>';
+        button.className = 'transparent';
         div.appendChild(divider());
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Last';
+        button.className = 'transparent';
 
         div.appendChild(wSelect.createSelect(data.select));
 
@@ -231,6 +237,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
     createResultAdmin = function () {
         var frag = document.createDocumentFragment(),
             div = document.createElement('div'),
+            button,
             data;
 
         data = {
@@ -295,8 +302,25 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         helper.forEach(data.select, function (item) {
             div.appendChild(wSelect.createSelect(item));
         });
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.textContent = 'Apply';
+        button.className = 'widget';
+        
+        div.appendChild(createAdminExport());
 
         return frag;
+    };
+    
+    createAdminExport = function () {
+        var div = document.createElement('div'),
+            button;
+        div.className = 'admin-export';
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.textContent = 'Export to Excel';
+        button.className = 'widget';
+        return div;
     };
 
     createFilterWrapper = function () {
@@ -316,7 +340,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-header-wrapper';
+        div.className = 'result-header-wrapper clearfix';
         div.appendChild(createFilterWrapper());
         div.appendChild(createNavigation());
 
@@ -341,7 +365,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-footer-wrapper';
+        div.className = 'result-footer-wrapper clearfix';
         div.appendChild(createNavigation());
 
         return frag;
