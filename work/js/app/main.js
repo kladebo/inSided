@@ -1,4 +1,4 @@
-/*global define: false */
+/*global define: false, Promise: false */
 
 define(function (require) {
     'use strict';
@@ -9,6 +9,10 @@ define(function (require) {
         helper = require('app/helpers'),
         searchform = require('app/search-form');
 
+    if (typeof Promise === "undefined" && Promise.toString().indexOf("[native code]") === -1) {
+        // load promise polyfill
+        require('promise').polyfill();
+    }
     
     // Load library/vendor modules using
     // full IDs, like:
