@@ -59,11 +59,13 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
     createTableHeader = function () {
         var tr = document.createElement('tr'),
             th;
+        
+        tr.className = 'result__table-header';
         helper.forEach(userData.headers, function (item) {
             var input;
             th = document.createElement('th');
             tr.appendChild(th);
-            th.className = 'result__table-header';
+            th.className = 'result__table-header-cel';
             if (item.field === 'username') {
                 input = document.createElement('input');
                 th.appendChild(input);
@@ -313,7 +315,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Apply';
-        button.className = 'button button--widget';
+        button.className = 'button';
         
         return div;
     };
@@ -325,7 +327,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Export to Excel';
-        button.className = 'button button--widget';
+        button.className = 'button';
         return div;
     };
 

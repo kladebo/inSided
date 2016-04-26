@@ -8,7 +8,9 @@
     display: inline-block;
     max-width: 50%;
 }
-.result {}
+.result {
+    //background: $form-background-color;
+}
 .result__table {
     width: 100%;
     border-collapse: collapse;
@@ -23,7 +25,9 @@
 }
 .result__table-header {
     border: $border;
-    padding: .6em;
+}
+.result__table-header-cel{
+    padding: .4em .6em;
     text-align: left;
 }
 .result__table-checkbox {

@@ -1,13 +1,14 @@
 @import 'a-config';
 @import 'boilerplate';
 //
-$button-add-color:#98CA32;
-$button-accent-color:#19B4F6;
-$button-cancel-color:#f4442a;
-@mixin button-bold () {
-    background: linear-gradient(rgba(#fff, 1), rgba(#fff, 0));
-    box-shadow: .1em .1em .3em 0 rgba($primary-black, .1);
-}
+$button-bgcolor--add: #A0CC41;
+$button-border-color--add: #78A81E;
+$button-bgcolor--accent: #28BDF5;
+$button-border-color--accent: #1797C6;
+$button-color--cancel: #D85F4A;
+$button-text-color--remove: #A9402A;
+$button-bgcolor--remove: #E07561;
+$button-border-color--remove: #CC5841;
 //
 html {
     color: $primary-text-color;
@@ -18,51 +19,56 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    background-color: rgba($primary-black, .05);
+    background-color: white;
 }
 main {
     margin-bottom: 10em;
-    .button {
-        border: $border;
-        border-radius: .2em;
-        padding: .4em .4em;
-        margin-right: .25em;
-        margin-bottom: .25em;
-    }
-    .button--add {
-        background: $button-add-color;
-        border: .1em solid darken($button-add-color, 15);
-        color: white;
-    }
-    .button--accent {
-        @include button-bold;
-        background: $button-accent-color;
-        border: .1em solid darken($button-accent-color, 15); //#1596C7;
-        color: white;
-    }
-    .button--cancel {
-        background: transparent;
-        border-color: transparent;
-        color: $button-cancel-color;
-    }
-    .button--transparent {
-        background: transparent;
-        border-color: transparent;
-    }
-    .button--widget {
-        @include button-bold;
-    }
-    .button--remove-row {
-        @include button-bold;
-        background: $button-cancel-color;
-        border-color: darken($button-cancel-color, 20);
-        color: darken($button-cancel-color, 30);
-        cursor: pointer;
-        &:before {
-            content: '\2715';
-            line-height: 0;
-            padding: 0 .1em;
-        }
+}
+.button {
+    background: $widget-backgound;
+    border: $border;
+    border-radius: .2em;
+    box-shadow: .1em .1em .2em 0 #EDEDED;
+    color: $primary-text-color;
+    margin-right: .25em;
+    margin-bottom: .25em;
+    padding: .6em .9em;
+}
+.button--add {
+    background: linear-gradient($button-bgcolor--add, darken($button-bgcolor--add, 6));
+    border: .1em solid $button-border-color--add;
+    color: white;
+    text-shadow: 0 -.1em .1em $button-border-color--add;
+}
+.button--accent {
+    background: linear-gradient($button-bgcolor--accent, darken($button-bgcolor--accent, 6));
+    border: .1em solid $button-border-color--accent;
+    color: white;
+    text-shadow: 0 -.1em .1em $button-border-color--accent;
+}
+.button--cancel {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: $button-color--cancel;
+    text-shadow: none;
+}
+.button--transparent {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+}
+.button--remove-row {
+    background: linear-gradient($button-bgcolor--remove, darken($button-bgcolor--remove, 6));
+    border-color: $button-border-color--remove;
+    color: $button-text-color--remove;
+    cursor: pointer;
+    padding: .4em;
+    width: 2.1em;
+    &:before {
+        content: '\2715';
+        line-height: 0;
     }
 }
 $calendar-font-weight: .94em;
@@ -89,7 +95,7 @@ table.calendar {
 .result,
 .search {
     float: right;
-    font-size: .8em;
+    font-size: .75em;
     line-height: normal;
     margin: 1em;
     width: 80%;

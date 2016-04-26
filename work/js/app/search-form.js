@@ -70,7 +70,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__columns';
+        div.className = 'search__columns search--border';
         div.appendChild(createHeader('Columns'));
         div.appendChild(insertCheckboxes());
 
@@ -219,7 +219,6 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
     updateDeleteButton = function (obj, button) {
         var value = [],
             css = obj.classList;
-        print(obj +'\n'+css);
         /*
             - push selected items in Array
         */
@@ -233,7 +232,6 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         /*
             - show/hide button--remove-row when value is changed
         */
-        print(value);
         if (value.join('') !== '') {
             button.classList.remove('hidden');
         } else {

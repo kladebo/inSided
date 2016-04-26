@@ -4,8 +4,10 @@
 
 @import 'a-config';
 //
+$searchform-padding: 0 1.75em .7em;
+//
 .search {
-    background-color: rgba($primary-black, .1);
+    background-color: $form-background-color;
     border: $border;
 }
 .search--border {
@@ -17,14 +19,14 @@
     margin-top: 1em;
 }
 .search__filter {
-    padding: 0 1em 1em 1em;
+    padding: $searchform-padding;
 }
 .search__add-row {
-    padding: 0 1em 1em 1em;
+    padding: $searchform-padding;
 }
 .search__columns {
     //vertical-align: top;
-    padding: 0 1em 1em 1em;
+    padding: $searchform-padding;
 }
 .search__row {
     margin-bottom: .3em;
@@ -42,11 +44,13 @@
     min-width: auto;
 }
 .search__column {
+    columns: 3;
     display: inline-block;
+    line-height: 1.75;
     vertical-align: top;
     width: 50%;
-    columns: 3;
 }
 .search__submit {
-    padding: 0 1em 1em 1em;
+    padding: $searchform-padding;
+    padding-top: .7em;
 }

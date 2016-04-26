@@ -6,18 +6,22 @@ $primary-black: #222;
 $accent-color: #8a2be2;
 $accent-color-two: #ffb100;
 //
-$border: .1em solid rgba($primary-black, .3);
+$form-background-color: #F8F8F8;
+//
+$border-color: #C5C5C5;
+$border: .1em solid $border-color;
 //
 $widget-dropdown-bgcolor: #fff;
 $widget-active-color: #fff;
 $widget-focus-color: #29B0F4;
 $widget-disabled-color: rgba($primary-black, .2);
+$widget-backgound: linear-gradient(#ffffff, #F6F6F6);
 //
 @mixin widget-base() {
-    background: linear-gradient(rgba(#fff, 1), rgba(#fff, 0));
+    background: $widget-backgound;
     border: $border;
     border-radius: .2em;
-    box-shadow: .1em .1em .3em 0 rgba($primary-black, .1);
+    box-shadow: .1em .1em .2em 0 #EDEDED;
     box-sizing: border-box;
     display: inline-block;
     margin-right: .25em;
@@ -32,8 +36,8 @@ $widget-disabled-color: rgba($primary-black, .2);
 }
 @mixin widget-focus() {
     background: $widget-active-color;
-    border-color: $widget-focus-color;
-    box-shadow: .1em .1em .3em 0 rgba($widget-focus-color, .6);
+    //border-color: $widget-focus-color;
+    //box-shadow: .1em .1em .3em 0 rgba($widget-focus-color, .6);
     // removes blue line on chrome
     outline: none;
 }
