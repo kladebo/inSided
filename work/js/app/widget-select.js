@@ -16,7 +16,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
 
 
     disableSelect = function (item) {
-        item.classList.add('disabled');
+        item.classList.add('w-select--disabled');
         item.setAttribute('old-tabindex', item.tabIndex);
         item.removeAttribute('tabIndex');
     };
@@ -33,6 +33,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             li = document.createElement('li');
             frag.appendChild(li);
             li.id = option.id;
+            li.className = multiple ? 'w-select__item-multiple' : 'w-select__item';
             li.setAttribute('data-value', option.value);
 
             li.appendChild(document.createTextNode(option.text));
@@ -46,7 +47,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         helper.forEach(groups, function (group) {
             span = document.createElement('span');
             frag.appendChild(span);
-            span.className = 'optgroup';
+            span.className = 'w-select__item-header';
             span.textContent = group.text;
             frag.appendChild(createOptions(group.options, multiple));
         });
@@ -59,7 +60,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             span;
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'multiple-menu';
+        div.className = 'w-select__dropdown-menu';
         //check
         span = document.createElement('span');
         div.appendChild(span);
@@ -98,27 +99,28 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             multiple = (item.type && item.type === 'multiple') || false,
             initialOption;
 
-        div.className = 'w-select ' + (multiple ? 'multiple' : 'single');
+        div.className = 'w-select';
 
-        div.tabIndex = item.id;
-        //text
+        div.tabIndex = 0; //item.id;
         div.appendChild(span);
-        span.className = 'value';
+        span.className = 'w-select__value';
 
         div.appendChild(ul);
+        ul.className = 'w-select__dropdown';
         ul.classList.add('hidden');
         ul.setAttribute('name', item.name);
 
+        // insert toggle-all menu when multiple
         if (multiple) {
             ul.appendChild(multipleMenu());
             ul.querySelector('span#all').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
-                    li.classList.add('active');
+                    li.classList.add('w-select__item-multiple--active');
                 });
             });
             ul.querySelector('span#none').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
-                    li.classList.remove('active');
+                    li.classList.remove('w-select__item-multiple--active');
                 });
             });
             ul.addEventListener('click', function (event) {
@@ -129,62 +131,83 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
                 return false;
             });
         }
+
+        // create headers within the list when provided by the data
         if (item.groups) {
             ul.appendChild(createOptionGroups(item.groups, multiple));
         } else {
             ul.appendChild(createOptions(item.options, multiple));
         }
-        
+
         span.textContent = item.title;
         if (item.initial > -1) {
             initialOption = ul.querySelector('li');
-            initialOption.classList.add('active');
+            initialOption.classList.add(multiple ? 'w-select__item-multiple--active' : 'w-select__item--active');
             span.textContent = initialOption.textContent;
         }
 
 
+        /*
+            #EVENT-SECTION
+            
+            - atach events to the main widget
+            click: the widget-dropdown shows on a click
+            focus: so the widget gets its visual focus
+            blur: makes the widget-dropdown disapear
+        */
+
         div.addEventListener('click', function () {
-            print(this.classList);
-            if (this.classList.contains('disabled')) {
+            // make the widget act as disabled when class is added
+            if (this.classList.contains('w-select--disabled')) {
                 return false;
             }
             div.focus();
             toggleDropDown(ul);
         });
+
         div.addEventListener('focus', function () {
             div.classList.add('focus');
         });
+
         div.addEventListener('blur', function () {
             div.classList.remove('focus');
             hideDropDown(ul);
         });
 
-        helper.forEach(ul.querySelectorAll('li'), function (li) {
 
+        /*
+            - attach event to all li child-nodes of the widget
+            
+            click: handles two types: multi OR not;
+            multi: toggles only the class of element
+            not: removes previous active class and adds the new one 
+                    - hides the dropdown
+        */
+
+        helper.forEach(ul.querySelectorAll('li'), function (li) {
             li.addEventListener('click', (function (item) {
                 return function (event) {
-                    var multiCheckbox,
-                        name;
                     event.cancelBubble = true;
                     if (event.stopPropagation) {
                         event.stopPropagation();
                     }
                     if (!multiple) {
                         helper.forEach(ul.querySelectorAll('li'), function (li) {
-                            li.classList.remove('active');
+                            li.classList.remove('w-select__item--active');
                         });
-                        item.classList.add('active');
+                        item.classList.add('w-select__item--active');
                         span.textContent = item.textContent;
                         hideDropDown(ul);
                     } else {
-                        item.classList.toggle('active');
-                        multiCheckbox = item.querySelector('input');
-                        //print(multiCheckbox.checked);
-                        //multiCheckbox.checked = !multiCheckbox.checked;
+                        item.classList.toggle('w-select__item-multiple--active');
                     }
                 };
             }(li)));
         });
+
+        /*
+            - return the entire widget
+        */
         return div;
     };
 
