@@ -4,8 +4,6 @@ $calendar-font-weight: .94em;
 table.calendar {
     border: $border;
     border-radius: .2em;
-    //font-size: .8em;
-    //line-height: normal;
     margin-top: .5em;
     input,
     select {
@@ -78,93 +76,4 @@ table.calendar {
         }
     }
 }
-.result {
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        td {
-            border: $border;
-            padding: .6em;
-            &.username {
-                img {
-                    margin-right: .5em;
-                }
-                a {
-                    color: $primary-text-color;
-                    font-weight: bold;
-                    text-decoration: none;
-                }
-            }
-            &.center {
-                text-align: center;
-            }
-        }
-        th {
-            border: $border;
-            padding: .6em;
-            text-align: left;
-        }
-        tr {
-            input {
-                margin-right: .5em;
-                vertical-align: middle;
-            }
-        }
-        .result-body {
-            tr {
-                background: white;
-                &:nth-child(even) {
-                    background: rgba($primary-black, .01);
-                }
-                &.active {
-                    background: lighten($widget-focus-color, 20);
-                }
-                &:hover {
-                    background: lighten($widget-focus-color, 40);
-                }
-                &.active:hover {
-                    background: lighten($widget-focus-color, 30);
-                }
-            }
-        }
-    }
-    .result-view-wrapper {
-        margin: .5em 0;
-    }
-    .result-header-wrapper,
-    .result-footer-wrapper {
-        > div {
-            display: inline-block;
-            max-width: 50%;
-        }
-    }
-    .result-header-wrapper {}
-    .result-footer-wrapper {}
-    .result-navigation {
-        text-align: right;
-        float: right;
-        .divider {
-            display: inline-block;
-            padding: 0 .3em;
-        }
-        .w-select {
-            margin-left: .4em;
-        }
-        button {
-            //background-color: transparent;
-            //border-color: transparent;
-            color: $widget-focus-color;
-            &:disabled {
-                color: $widget-disabled-color;
-            }
-        }
-    }
-    .result-admin {
-        .w-select {
-            width: 11em;
-        }
-        .admin-export {
-            float: right;
-        }
-    }
-}
+

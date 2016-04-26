@@ -6,9 +6,13 @@
 //
 .w-select {
     @include widget-base;
+    cursor: default;
 }
 .w-select:focus {
     @include widget-focus;
+}
+.w-select--small {
+    width: 11em;
 }
 .w-select--disabled {
     color: $widget-disabled-color;
@@ -62,7 +66,6 @@
 .w-select__item-multiple {
     padding: .2em .3em;
     white-space: nowrap;
-    cursor: default;
 }
 .w-select__item--active,
 .w-select__item-multiple--active {

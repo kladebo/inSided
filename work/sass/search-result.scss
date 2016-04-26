@@ -1,0 +1,86 @@
+/*------------------------------------*\
+    #SECTION-WIDGET-SELECT
+\*------------------------------------*/
+
+@import 'a-config';
+//
+@mixin iets {
+    display: inline-block;
+    max-width: 50%;
+}
+.result {}
+.result__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.result__table-cel {
+    border: $border;
+    padding: .6em;
+    white-space: nowrap;
+}
+.result__table-cel--center {
+    text-align: center;
+}
+.result__table-header {
+    border: $border;
+    padding: .6em;
+    text-align: left;
+}
+.result__table-checkbox {
+    margin-right: .5em;
+    vertical-align: middle;
+}
+.result__table-row {
+    background: white;
+
+    &:nth-child(even) {
+        background: rgba($primary-black, .01);
+    }
+    &.active {
+        background: lighten($widget-focus-color, 20);
+    }
+    &:hover {
+        background: lighten($widget-focus-color, 40);
+    }
+    &.active:hover {
+        background: lighten($widget-focus-color, 30);
+    }
+}
+.result__table-userlink {
+    color: $primary-text-color;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.result__table-avatar {
+    margin-right: .5em;
+}
+.result__header-wrapper {}
+.result__body-wrapper {
+    margin: .5em 0;
+}
+.result__footer-wrapper {}
+.result__filter {
+    @include iets;
+    background-color: silver;
+}
+.result__admin-wrapper {}
+.result__navigation {
+    @include iets;
+    text-align: right;
+    float: right;
+}
+.result__navigation--label {
+    display: inline-block;
+    padding: .4em .4em;
+}
+.result__navigation--divider {
+    display: inline-block;
+    padding: 0 .3em;
+}
+.result__admin-settings {
+    float: left;
+}
+.result__admin-export {
+    float: right;
+}

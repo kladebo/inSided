@@ -1,6 +1,6 @@
 /*global define: false */
 
-define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 'app/searchresult', 'app/widget-input'], function (print, helper, wCheckbox, wSelect, result, wInput) {
+define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 'app/widget-input', 'app/search-result'], function (print, helper, wCheckbox, wSelect, wInput, sResult) {
     'use strict';
 
     var searchformData,
@@ -112,10 +112,10 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                         });
                     });
                     if (secondSelect.querySelector('.multiple-menu')) {
-                        helper.forEach(secondSelect.querySelectorAll('.multiple-menu span'), function (span){
-                            span.addEventListener('click', function (){
+                        helper.forEach(secondSelect.querySelectorAll('.multiple-menu span'), function (span) {
+                            span.addEventListener('click', function () {
                                 //print('klaasss');
-                                 updateDeleteButton(secondSelect, button);
+                                updateDeleteButton(secondSelect, button);
                             }, true);
                         });
                     }
@@ -204,7 +204,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
             console.error("Failed!", error);
         });
 
-        result.initResult();
+        sResult.initResult();
 
         document.getElementById('addRow').addEventListener('click', function () {
             insertFilterRow();

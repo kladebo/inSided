@@ -9,8 +9,8 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         createTableRows,
         activateRow,
         initResult,
-        createResultAdminWrapper,
         createResultAdmin,
+        createAdminSettings,
         createAdminExport,
         createResultHeader,
         createResultFooter,
@@ -31,12 +31,12 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
     };
 
     updateAdminWrapper = function () {
-        var wrapper = document.querySelector('.admin-body'),
-            result = document.querySelector('.result-body'),
+        var wrapper = document.querySelector('tr.result__table-admin'),
+            resultRows = document.querySelectorAll('tr.result__table-row'),
             counter;
 
         counter = -1;
-        helper.forEach(result.querySelectorAll('tr'), function (item) {
+        helper.forEach(resultRows, function (item) {
             if (item.classList.contains('active')) {
                 counter += 1;
             }
@@ -52,6 +52,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
     createAvatar = function (src) {
         var img = document.createElement('img');
         img.src = 'img/data/' + src;
+        img.className = 'result__table-avatar';
 
         return img;
     };
@@ -64,16 +65,18 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             var input;
             th = document.createElement('th');
             tr.appendChild(th);
+            th.className = 'result__table-header';
             if (item.field === 'username') {
                 input = document.createElement('input');
                 th.appendChild(input);
                 input.type = 'checkbox';
+                input.className = 'result__table-checkbox';
                 input.addEventListener('change', function () {
                     print(this.checked);
-                    var result = document.querySelector('.result-body'),
+                    var resultRows = document.querySelectorAll('tr.result__table-row'),
                         active = this.checked;
 
-                    helper.forEach(result.querySelectorAll('tr'), function (item) {
+                    helper.forEach(resultRows, function (item) {
                         activateRow(item, active);
                         updateAdminWrapper();
                     });
@@ -87,34 +90,38 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
     createTableRows = function () {
         var frag = document.createDocumentFragment(),
-            tbody = document.createElement('tbody'),
             tr,
             td,
             a;
 
-        frag.appendChild(tbody);
-        tbody.className = 'result-body';
         helper.forEach(userData.users, function (user) {
             tr = document.createElement('tr');
+            frag.appendChild(tr);
+            tr.className = 'result__table-row';
+            
             tr.addEventListener('click', function () {
                 var active = this.classList.contains('active');
                 activateRow(this, !active);
                 updateAdminWrapper();
             });
-            tbody.appendChild(tr);
+            
             helper.forEach(userData.headers, function (item) {
                 var input;
                 td = document.createElement('td');
                 tr.appendChild(td);
+                td.className = 'result__table-cel';
+                
                 // specific layout for username
                 if (item.field === 'username') {
-                    td.className = 'username';
+                    //td.classList.add('result__table-cel--left');
                     input = document.createElement('input');
                     td.appendChild(input);
+                    input.className = 'result__table-checkbox';
                     input.type = 'checkbox';
 
                     a = document.createElement('a');
                     a.href = '#';
+                    a.className = 'result__table-userlink';
                     td.appendChild(a);
                     if (user.img) {
                         a.appendChild(createAvatar(user.img));
@@ -130,20 +137,21 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                     });
                 } else {
                     td.appendChild(document.createTextNode(user[item.field]));
-                    td.classList.add('center');
+                    td.classList.add('result__table-cel--center');
                 }
             });
         });
         
-        tbody = document.createElement('tbody');
-        frag.appendChild(tbody);
-        tbody.className = 'admin-body invisible';
+        /*
+            - admin row
+        */
         tr = document.createElement('tr');
-        tbody.appendChild(tr);
+        frag.appendChild(tr);
+        tr.className = 'result__table-admin invisible';
         td = document.createElement('td');
         tr.appendChild(td);
         td.setAttribute('colspan', userData.headers.length);
-        td.appendChild(createResultAdminWrapper());
+        td.appendChild(createResultAdmin());
 
         return frag;
     };
@@ -160,7 +168,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         divider = function () {
             var span = document.createElement('span');
             span.textContent = '|';
-            span.className = 'divider';
+            span.className = 'result__navigation--divider';
             return span;
         };
         data = {
@@ -188,24 +196,25 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         };
 
         frag.appendChild(div);
-        div.className = 'result-navigation';
+        div.className = 'result__navigation';
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'First';
-        button.className = 'transparent';
+        button.className = 'button button--transparent';
         button.disabled = true;
         div.appendChild(divider());
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = '<<';
-        button.className = 'transparent';
+        button.className = 'button button--transparent';
         button.disabled = true;
         div.appendChild(divider());
 
         span = document.createElement('span');
         div.appendChild(span);
+        span.className = 'result__navigation--label';
         span.textContent = 'Page ';
 
         input = wInput.createInput({});
@@ -215,28 +224,28 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
         span = document.createElement('span');
         div.appendChild(span);
+        span.className = 'result__navigation--label';
         span.textContent = 'of ' + parseInt(data.resultcount / data.pageview, 10);
         div.appendChild(divider());
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = '>>';
-        button.className = 'transparent';
+        button.className = 'button button--transparent';
         div.appendChild(divider());
 
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Last';
-        button.className = 'transparent';
+        button.className = 'button button--transparent';
 
         div.appendChild(wSelect.createSelect(data.select));
 
         return frag;
     };
 
-    createResultAdmin = function () {
-        var frag = document.createDocumentFragment(),
-            div = document.createElement('div'),
+    createAdminSettings = function () {
+        var div = document.createElement('div'),
             button,
             data;
 
@@ -297,29 +306,29 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                     }]
                 }]
         };
-        frag.appendChild(div);
-        div.className = 'result-admin';
+        div.className = 'result__admin-settings';
         helper.forEach(data.select, function (item) {
-            div.appendChild(wSelect.createSelect(item));
+            var select = wSelect.createSelect(item);
+            div.appendChild(select);
+            select.classList.add('w-select--small');
         });
+        
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Apply';
-        button.className = 'widget';
+        button.className = 'button button--widget';
         
-        div.appendChild(createAdminExport());
-
-        return frag;
+        return div;
     };
     
     createAdminExport = function () {
         var div = document.createElement('div'),
             button;
-        div.className = 'admin-export';
+        div.className = 'result__admin-export';
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Export to Excel';
-        button.className = 'widget';
+        button.className = 'button button--widget';
         return div;
     };
 
@@ -328,7 +337,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-filter-wrapper';
+        div.className = 'result__filter';
 
         div.textContent = 'filter-wrapper';
 
@@ -340,22 +349,23 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-header-wrapper clearfix';
+        div.className = 'result__header-wrapper clearfix';
         div.appendChild(createFilterWrapper());
         div.appendChild(createNavigation());
 
         return frag;
     };
 
-    createResultAdminWrapper = function () {
+    createResultAdmin = function () {
         var frag = document.createDocumentFragment(),
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-admin-wrapper';
+        div.className = 'result__admin-wrapper';
 
         // insert admin toolbar
-        div.appendChild(createResultAdmin());
+        div.appendChild(createAdminSettings());
+        div.appendChild(createAdminExport());
 
         return frag;
     };
@@ -365,7 +375,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div');
 
         frag.appendChild(div);
-        div.className = 'result-footer-wrapper clearfix';
+        div.className = 'result__footer-wrapper clearfix';
         div.appendChild(createNavigation());
 
         return frag;
@@ -376,8 +386,9 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             div = document.createElement('div'),
             table = document.createElement('table');
         frag.appendChild(div);
-        div.className = 'result-view-wrapper';
+        div.className = 'result__body-wrapper';
         div.appendChild(table);
+        table.className = 'result__table';
         table.appendChild(createTableHeader());
         table.appendChild(createTableRows());
         return frag;

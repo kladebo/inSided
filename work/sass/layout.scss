@@ -22,7 +22,7 @@ body {
 }
 main {
     margin-bottom: 10em;
-    button {
+    .button {
         border: $border;
         border-radius: .2em;
         padding: .4em .4em;
@@ -46,11 +46,11 @@ main {
         border-color: transparent;
         color: $button-cancel-color;
     }
-    button.transparent{
+    .button--transparent{
         background: transparent;
         border-color: transparent;
     }
-    button.widget{
+    .button--widget{
         @include button-bold;
     }
     button.remove-row {
@@ -72,3 +72,4 @@ main {
 @import 'widget-input';
 // overrules some widget props 
 @import 'searchform';
+@import 'search-result';
