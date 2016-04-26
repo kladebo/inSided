@@ -114,7 +114,6 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                     if (secondSelect.querySelector('.multiple-menu')) {
                         helper.forEach(secondSelect.querySelectorAll('.multiple-menu span'), function (span) {
                             span.addEventListener('click', function () {
-                                //print('klaasss');
                                 updateDeleteButton(secondSelect, button);
                             }, true);
                         });
@@ -171,7 +170,6 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                 value.push(item.getAttribute('data-value'));
             });
         }
-        print('"' + value.join('') + '"');
         if (value.join('') !== '') {
             button.classList.remove('hidden');
         } else {

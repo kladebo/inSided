@@ -19,7 +19,6 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         updateAdminWrapper;
 
     activateRow = function (item, active) {
-        print(item + '\n' + active);
         if (active) {
             item.querySelector('input').checked = true;
             item.classList.add('active');
