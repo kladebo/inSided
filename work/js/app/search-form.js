@@ -4,6 +4,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
     'use strict';
 
     var searchformData,
+        createForm,
+        createHeader,
         createRow,
         removeCalendar,
         insertFilterRow,
@@ -13,31 +15,85 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         updateDeleteButton;
 
     createRow = function () {
-        var div = document.createElement('div'),
-            box1 = document.createElement('div'),
-            box2 = document.createElement('div'),
-            box3 = document.createElement('div'),
-            box4 = document.createElement('div');
+        var frag = document.createDocumentFragment(),
+            div;
 
-        div.className = 'row';
-        div.appendChild(box1);
-        box1.className = 'col';
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__col';
 
-        div.appendChild(box2);
-        box2.className = 'col';
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__col';
 
-        div.appendChild(box3);
-        box3.className = 'col';
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__col';
 
-        div.appendChild(box4);
-        box4.className = 'col';
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__col';
+
+        div = document.createElement('div');
+        div.appendChild(frag);
+        div.className = 'search__row';
 
         return div;
     };
 
+    createHeader = function (text) {
+        var div = document.createElement('div');
+        div.className = 'search__header';
+        div.textContent = text;
+        return div;
+    };
+
+    createForm = function () {
+        var frag = document.createDocumentFragment(),
+            button,
+            div;
+
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__filter';
+        div.appendChild(createHeader('Advanced search'));
+        div.appendChild(insertFilterRow());
+
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__add-row search--border';
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.id = 'addRow';
+        button.className = 'button button--add';
+        button.textContent = 'Add row';
+
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__columns';
+        div.appendChild(createHeader('Columns'));
+        div.appendChild(insertCheckboxes());
+
+        div = document.createElement('div');
+        frag.appendChild(div);
+        div.className = 'search__submit';
+
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.className = 'button button--accent';
+        button.textContent = 'Update';
+
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.className = 'button button--cancel';
+        button.textContent = 'Cancel';
+
+        document.getElementById('search').appendChild(frag);
+    };
+
     insertFilterRow = function () {
-        var parent = document.getElementById('selectfilters'),
-            row = parent.insertBefore(createRow(), parent.children[parent.children.length - 1]),
+        var row = createRow(),
+            cols = row.querySelectorAll('.search__col'),
             firstSelect,
             secondSelect;
 
@@ -46,40 +102,39 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                 return select.name === 'main-filter';
             })[0]
         );
-        row.querySelectorAll('div.col')[0].appendChild(firstSelect);
+        cols[0].appendChild(firstSelect);
+        firstSelect.classList.add('w-select--wide');
 
         secondSelect = wSelect.createSelect(
             searchformData.selects.filter(function (select) {
                 return select.name === 'date-posted';
             })[0]
         );
+        secondSelect.classList.add('w-select--wide');
         wSelect.disableSelect(secondSelect);
-        //secondSelect.classList.add('disabled');
 
-        row.querySelectorAll('div.col')[1].appendChild(secondSelect);
+        row.querySelectorAll('.search__col')[1].appendChild(secondSelect);
 
         helper.forEach(firstSelect.querySelectorAll('li'), function (li, index) {
             li.addEventListener('click', function () {
                 removeCalendar(row);
                 // create select2
-                var secondCel = row.querySelectorAll('div.col')[1],
-                    thirdCel = row.querySelectorAll('div.col')[2],
-                    fourthCel = row.querySelectorAll('div.col')[3],
-                    secondSelect,
+                var secondSelect,
                     input,
                     formObj,
                     button;
 
-                secondCel.innerHTML = '';
-                thirdCel.innerHTML = '';
-                fourthCel.innerHTML = '';
+                cols[1].innerHTML = '';
+                cols[2].innerHTML = '';
+                cols[3].innerHTML = '';
 
                 secondSelect = wSelect.createSelect(
                     searchformData.selects.filter(function (select) {
                         return select.name === li.getAttribute('data-value');
                     })[0]
                 );
-                secondCel.appendChild(secondSelect);
+                cols[1].appendChild(secondSelect);
+                secondSelect.classList.add('w-select--wide');
 
                 button = insertDeleteButton(row);
 
@@ -90,10 +145,11 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                             return input.name === 'calendar';
                         })[0]
                     );
-                    thirdCel.appendChild(input);
+                    cols[2].appendChild(input);
+                    input.classList.add('w-input--wide');
 
                     // attach change to update the deleteButton
-                    fourthCel.appendChild(button);
+                    cols[3].appendChild(button);
                     formObj = input.querySelector('input');
                     formObj.addEventListener('change', function () {
                         updateDeleteButton(input, button);
@@ -105,14 +161,14 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                 } else if (li.getAttribute('data-value') === 'group-post') {
 
                     // attach change to update the deleteButton
-                    thirdCel.appendChild(button);
+                    cols[2].appendChild(button);
                     helper.forEach(secondSelect.querySelectorAll('li'), function (li) {
                         li.addEventListener('click', function () {
                             updateDeleteButton(secondSelect, button);
                         });
                     });
-                    if (secondSelect.querySelector('.multiple-menu')) {
-                        helper.forEach(secondSelect.querySelectorAll('.multiple-menu span'), function (span) {
+                    if (secondSelect.querySelector('.w-select__dropdown-menu')) {
+                        helper.forEach(secondSelect.querySelectorAll('.w-select__dropdown-menu-item'), function (span) {
                             span.addEventListener('click', function () {
                                 updateDeleteButton(secondSelect, button);
                             }, true);
@@ -131,7 +187,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
             checklist;
 
         frag.appendChild(div);
-        div.className = 'column account';
+        div.className = 'search__column search__column--account';
         checklist = wCheckbox.create(
             searchformData.checkboxes.groups.filter(function (group) {
                 return group.name === 'Account';
@@ -140,7 +196,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         div.appendChild(checklist);
 
         div = document.createElement('div');
-        div.className = 'column user';
+        div.className = 'search__column search__column--user';
         checklist = wCheckbox.create(
             searchformData.checkboxes.groups.filter(function (group) {
                 return group.name === 'User';
@@ -149,7 +205,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         div.appendChild(checklist);
         frag.appendChild(div);
 
-        document.querySelector('div#checkboxes').appendChild(frag);
+        return frag;
     };
 
     removeCalendar = function (row) {
@@ -163,13 +219,21 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
     updateDeleteButton = function (obj, button) {
         var value = [],
             css = obj.classList;
+        print(obj +'\n'+css);
+        /*
+            - push selected items in Array
+        */
         if (css.contains('w-input')) {
             value.push(obj.querySelector('input').value);
         } else if (css.contains('w-select')) {
-            helper.forEach(obj.querySelectorAll('li.active'), function (item) {
+            helper.forEach(obj.querySelectorAll('.w-select__item-multiple--active'), function (item) {
                 value.push(item.getAttribute('data-value'));
             });
         }
+        /*
+            - show/hide button--remove-row when value is changed
+        */
+        print(value);
         if (value.join('') !== '') {
             button.classList.remove('hidden');
         } else {
@@ -179,7 +243,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
     insertDeleteButton = function (row) {
         var button = document.createElement('button');
-        button.className = 'remove-row hidden';
+        button.className = 'button button--remove-row hidden';
         button.addEventListener('click', function () {
             removeCalendar(row);
 
@@ -192,21 +256,17 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         helper.getJSON('js/data/searchform.min.json').then(function (response) {
             searchformData = response;
 
-            // row with first box
-            insertFilterRow();
+            createForm();
 
-            // generate checkboxes
-            insertCheckboxes();
+            document.getElementById('addRow').addEventListener('click', function () {
+                document.querySelector('.search__filter').appendChild(insertFilterRow());
+            });
 
         }, function (error) {
             console.error("Failed!", error);
         });
 
         sResult.initResult();
-
-        document.getElementById('addRow').addEventListener('click', function () {
-            insertFilterRow();
-        });
     };
 
     return {

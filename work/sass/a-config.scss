@@ -18,6 +18,7 @@ $widget-disabled-color: rgba($primary-black, .2);
     border: $border;
     border-radius: .2em;
     box-shadow: .1em .1em .3em 0 rgba($primary-black, .1);
+    box-sizing: border-box;
     display: inline-block;
     margin-right: .25em;
     margin-bottom: .25em;
@@ -25,6 +26,9 @@ $widget-disabled-color: rgba($primary-black, .2);
     text-align: left;
     vertical-align: top;
     max-width: 200px;
+    * {
+        box-sizing: border-box;
+    }
 }
 @mixin widget-focus() {
     background: $widget-active-color;

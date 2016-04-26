@@ -60,7 +60,6 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         var tr = document.createElement('tr'),
             th;
         helper.forEach(userData.headers, function (item) {
-            //print(item.text);
             var input;
             th = document.createElement('th');
             tr.appendChild(th);
@@ -71,7 +70,6 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                 input.type = 'checkbox';
                 input.className = 'result__table-checkbox';
                 input.addEventListener('change', function () {
-                    print(this.checked);
                     var resultRows = document.querySelectorAll('tr.result__table-row'),
                         active = this.checked;
 

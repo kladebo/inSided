@@ -29,31 +29,30 @@ main {
         margin-right: .25em;
         margin-bottom: .25em;
     }
-    
-    button.add {
+    .button--add {
         background: $button-add-color;
         border: .1em solid darken($button-add-color, 15);
         color: white;
     }
-    button.accent {
+    .button--accent {
         @include button-bold;
         background: $button-accent-color;
         border: .1em solid darken($button-accent-color, 15); //#1596C7;
         color: white;
     }
-    button.cancel {
+    .button--cancel {
         background: transparent;
         border-color: transparent;
         color: $button-cancel-color;
     }
-    .button--transparent{
+    .button--transparent {
         background: transparent;
         border-color: transparent;
     }
-    .button--widget{
+    .button--widget {
         @include button-bold;
     }
-    button.remove-row {
+    .button--remove-row {
         @include button-bold;
         background: $button-cancel-color;
         border-color: darken($button-cancel-color, 20);
@@ -66,10 +65,38 @@ main {
         }
     }
 }
+$calendar-font-weight: .94em;
+table.calendar {
+    border: $border;
+    border-radius: .2em;
+    margin-top: .5em;
+    input,
+    select {
+        font-size: $calendar-font-weight;
+        line-height: normal;
+    }
+    td {
+        font-size: $calendar-font-weight;
+        text-align: center;
+    }
+    .curdate {
+        border-color: $widget-focus-color;
+    }
+    .wkhead {
+        display: none;
+    }
+}
+.result,
+.search {
+    float: right;
+    font-size: .8em;
+    line-height: normal;
+    margin: 1em;
+    width: 80%;
+}
 //
+@import 'search-form';
+@import 'search-result';
 @import 'widget-checkbox';
 @import 'widget-select';
 @import 'widget-input';
-// overrules some widget props 
-@import 'search-form';
-@import 'search-result';

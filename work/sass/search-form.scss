@@ -1,79 +1,52 @@
+/*------------------------------------*\
+    #SECTION-SEARCH-FORM
+\*------------------------------------*/
+
 @import 'a-config';
 //
-$calendar-font-weight: .94em;
-table.calendar {
-    border: $border;
-    border-radius: .2em;
-    margin-top: .5em;
-    input,
-    select {
-        font-size: $calendar-font-weight;
-        line-height: normal;
-    }
-    td {
-        font-size: $calendar-font-weight;
-        text-align: center;
-    }
-    .curdate {
-        border-color: $widget-focus-color;
-    }
-    .wkhead {
-        display: none;
-    }
-}
-.result,
-.search {
-    box-sizing: border-box;
-    float: right;
-    font-size: .8em;
-    line-height: normal;
-    margin: 1em;
-    //max-width: 70em;
-    width: 80%;
-    * {
-        box-sizing: border-box;
-    }
-}
 .search {
     background-color: rgba($primary-black, .1);
     border: $border;
-    .w-select,
-    .w-input {
-        width: 100%;
-    }
-    > div {
-        padding: 1em;
-        .header {
-            margin-bottom: .5em;
-        }
-    }
-    > div + div {
-        border-top: $border;
-    }
-    .row {
-        margin-bottom: .3em;
-        .col {
-            display: inline-block;
-            //width: 25%;
-            min-width: 210px;
-            vertical-align: top;
-        }
-        .col + .col {
-            padding-left: .3em;
-        }
-        .col:last-child {
-            //background: red;
-            min-width: auto;
-        }
-    }
-    .checkbox-box {
-        //vertical-align: top;
-        .column {
-            display: inline-block;
-            vertical-align: top;
-            width: 50%;
-            columns: 3;
-        }
-    }
 }
-
+.search--border {
+    border-bottom: $border;
+}
+.search__header {
+    font-weight: bold;
+    margin-bottom: .5em;
+    margin-top: 1em;
+}
+.search__filter {
+    padding: 0 1em 1em 1em;
+}
+.search__add-row {
+    padding: 0 1em 1em 1em;
+}
+.search__columns {
+    //vertical-align: top;
+    padding: 0 1em 1em 1em;
+}
+.search__row {
+    margin-bottom: .3em;
+}
+.search__col {
+    display: inline-block;
+    //width: 25%;
+    min-width: 210px;
+    vertical-align: top;
+}
+.search__col + .search__col {
+    padding-left: .3em;
+}
+.search__col:last-child {
+    min-width: auto;
+}
+.search__column {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    columns: 3;
+}
+.search__submit {
+    padding: 0 1em 1em 1em;
+}

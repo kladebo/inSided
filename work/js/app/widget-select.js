@@ -65,13 +65,15 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         span = document.createElement('span');
         div.appendChild(span);
         span.textContent = 'Check all';
-        span.id = 'all';
+        span.id = 'select-all';
+        span.className = 'w-select__dropdown-menu-item';
 
         // uncheck
         span = document.createElement('span');
         div.appendChild(span);
         span.textContent = 'Uncheck all';
-        span.id = 'none';
+        span.id = 'select-none';
+        span.className = 'w-select__dropdown-menu-item';
         return frag;
     };
 
@@ -113,12 +115,12 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         // insert toggle-all menu when multiple
         if (multiple) {
             ul.appendChild(multipleMenu());
-            ul.querySelector('span#all').addEventListener('click', function (event) {
+            ul.querySelector('span#select-all').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.add('w-select__item-multiple--active');
                 });
             });
-            ul.querySelector('span#none').addEventListener('click', function (event) {
+            ul.querySelector('span#select-none').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.remove('w-select__item-multiple--active');
                 });
