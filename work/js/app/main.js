@@ -7,16 +7,13 @@ define(function (require) {
     // like:
     var print = require('app/print'),
         helper = require('app/helpers'),
-        searchform = require('app/searchform');
+        searchform = require('app/search-form');
 
     
     // Load library/vendor modules using
     // full IDs, like:
     require(['domReady!'], function () {
-
         searchform.initForm();
-
-
     });
 
 });
