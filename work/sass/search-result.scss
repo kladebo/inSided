@@ -17,31 +17,34 @@
 }
 .result__table-cel {
     border: $border;
-    padding: .6em;
+    padding: 1.2em .7em 1.1em;
     white-space: nowrap;
 }
 .result__table-cel--center {
     text-align: center;
 }
-.result__table-header {
+.result__table-cel--right {
+    text-align: right;
+}
+.result__table-cel--username {}
+.result__table-headerrow {
     border: $border;
+    background: $form-background-color;
 }
-.result__table-header-cel{
-    padding: .4em .6em;
+.result__table-header-cel {
+    padding: 1.1em .6em .9em;
+    white-space: nowrap;
+}
+.result__table-header-cel--user {
     text-align: left;
-}
-.result__table-checkbox {
-    margin-right: .5em;
-    vertical-align: middle;
 }
 .result__table-row {
     background: white;
-
-    &:nth-child(even) {
+    &:nth-child(odd) {
         background: rgba($primary-black, .01);
     }
     &.active {
-        background: lighten($widget-focus-color, 20);
+        background: #ebf8fe;
     }
     &:hover {
         background: lighten($widget-focus-color, 40);
@@ -50,14 +53,29 @@
         background: lighten($widget-focus-color, 30);
     }
 }
-.result__table-userlink {
+.result__checkbox {
+    margin-right: .7em;
+    //    vertical-align: text-top;
+}
+.result__userlink {
     color: $primary-text-color;
+    display: inline-block;
     font-weight: bold;
+    padding-right: 1.1em;
     text-decoration: none;
     white-space: nowrap;
+    width: 89%;
 }
-.result__table-avatar {
+.result__userlink:hover {
+    text-decoration: underline;
+}
+.result__userlink-avatar {
     margin-right: .5em;
+}
+.result__userlink-icon {
+    float: right;
+    margin-top: .5em;
+    //margin-right: .2em;
 }
 .result__header-wrapper {}
 .result__body-wrapper {
@@ -66,9 +84,20 @@
 .result__footer-wrapper {}
 .result__filter {
     @include iets;
-    background-color: silver;
+//    background-color: silver;
 }
-.result__admin-wrapper {}
+.result__filterbutton-divider {
+    display: inline-block;
+    margin: 0 .5em 0 .3em;
+}
+.result__table-adminrow {
+    background: $form-background-color;
+    border: $border;
+}
+.result__table-admin-cel {
+    padding: .6em;
+    padding-top: .8em;
+}
 .result__navigation {
     @include iets;
     text-align: right;
@@ -80,7 +109,7 @@
 }
 .result__navigation--divider {
     display: inline-block;
-    padding: 0 .3em;
+    padding: 0;
 }
 .result__admin-settings {
     float: left;

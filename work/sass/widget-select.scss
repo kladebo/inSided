@@ -12,7 +12,8 @@
     @include widget-focus;
 }
 .w-select--small {
-    width: 11em;
+    margin-right: .4em;
+    width: 11.6em;
 }
 .w-select--wide {
     width: 100%;
@@ -24,8 +25,8 @@
     cursor: not-allowed;
 }
 .w-select__value {
-//    border: $border;
-//    border-radius: .2em;
+    //    border: $border;
+    //    border-radius: .2em;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -33,9 +34,11 @@
     position: relative;
     text-overflow: ellipsis;
     &:after {
-        content: '\25BC';
+        content: '\25BE';
+        font-size: 1.4em;
         position: absolute;
         right: .4em;
+        top: .1em;
     }
 }
 .w-select__dropdown {
@@ -46,7 +49,7 @@
     list-style-type: none;
     margin: 0;
     margin-top: .4em;
-    max-height: 18em;
+    max-height: 17em;
     overflow-x: hidden;
     overflow-y: auto;
     padding: .3em;
@@ -56,7 +59,7 @@
     z-index: 2;
 }
 .w-select__dropdown-menu {
-    padding: .6em .4em;
+    padding: 0 .4em .6em;
 }
 .w-select__dropdown-menu-item {
     color: $widget-focus-color;
@@ -72,13 +75,17 @@
     padding: .2em .3em;
     white-space: nowrap;
 }
-.w-select__item--active,
-.w-select__item-multiple--active {
+.w-select__item--active {
     background: $widget-focus-color;
 }
+.w-select__item-multiple--active {}
 .w-select__item:hover,
 .w-select__item-multiple:hover {
     background: lighten($widget-focus-color, 20);
+}
+.w-select__input {
+    vertical-align: text-bottom;
+    margin-right: .4em;
 }
 .w-select__item-header {
     display: block;
@@ -86,11 +93,11 @@
     padding: .4em;
     padding-top: .5em;
 }
-.w-select__item-multiple:before {
-    content: '\2610';
-    font-size: 1em;
-    margin-right: .4em;
-}
-.w-select__item-multiple--active:before {
-    content: '\2611';
-}
+//.w-select__item-multiple:before {
+//    content: '\2610';
+//    font-size: 1em;
+//    margin-right: .4em;
+//}
+//.w-select__item-multiple--active:before {
+//    content: '\2611';
+//}

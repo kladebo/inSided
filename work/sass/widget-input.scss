@@ -4,7 +4,7 @@
     @include widget-base;
     //padding: .4em 1em .4em .4em;
     &.small {
-        width: 3em;
+        width: 2.6em;
     }
     &.focus{
         @include widget-focus;

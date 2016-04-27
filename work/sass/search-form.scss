@@ -16,25 +16,27 @@ $searchform-padding: 0 1.75em .7em;
 .search__header {
     font-weight: bold;
     margin-bottom: .5em;
-    margin-top: 1em;
+    margin-top: 1.6em;
 }
 .search__filter {
     padding: $searchform-padding;
+    padding-bottom: .3em;
 }
 .search__add-row {
     padding: $searchform-padding;
+    padding-bottom: 1.4em;
 }
 .search__columns {
     //vertical-align: top;
     padding: $searchform-padding;
 }
 .search__row {
-    margin-bottom: .3em;
+    margin-bottom: .6em;
 }
 .search__col {
     display: inline-block;
     //width: 25%;
-    min-width: 210px;
+    min-width: 200px;
     vertical-align: top;
 }
 .search__col + .search__col {

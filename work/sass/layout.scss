@@ -1,15 +1,15 @@
 @import 'a-config';
 @import 'boilerplate';
 //
-$button-bgcolor--add: #A0CC41;
-$button-border-color--add: #78A81E;
-$button-bgcolor--accent: #28BDF5;
-$button-border-color--accent: #1797C6;
-$button-color--cancel: #D85F4A;
-$button-text-color--remove: #A9402A;
-$button-bgcolor--remove: #E07561;
-$button-border-color--remove: #CC5841;
-//
+$button-bgcolor--add: #a0cc41;
+$button-border-color--add: #78a81e;
+$button-text-color--accent: #1BADF6;
+$button-bgcolor--accent: #28bdf5;
+$button-border-color--accent: #1797c6;
+$button-color--cancel: #d85f4a;
+$button-text-color--remove: #a9402a;
+$button-bgcolor--remove: #e07561;
+$button-border-color--remove: #cc5841;
 html {
     color: $primary-text-color;
     font-family: $font-stack;
@@ -28,11 +28,14 @@ main {
     background: $widget-backgound;
     border: $border;
     border-radius: .2em;
-    box-shadow: .1em .1em .2em 0 #EDEDED;
+    box-shadow: .1em .1em .2em 0 #ededed;
     color: $primary-text-color;
     margin-right: .25em;
     margin-bottom: .25em;
     padding: .6em .9em;
+}
+.button:disabled {
+    color: $widget-disabled-color;
 }
 .button--add {
     background: linear-gradient($button-bgcolor--add, darken($button-bgcolor--add, 6));
@@ -59,16 +62,36 @@ main {
     box-shadow: none;
     text-shadow: none;
 }
+.button--minimum-padding {
+    margin: 0;
+    padding-left: .3em;
+    padding-right: .3em;
+}
+.button--accent-text {
+    color: $button-text-color--accent;
+}
+.button--large-fontsize {
+    font-size: 1.3em;
+    line-height: 0;
+}
 .button--remove-row {
     background: linear-gradient($button-bgcolor--remove, darken($button-bgcolor--remove, 6));
     border-color: $button-border-color--remove;
     color: $button-text-color--remove;
     cursor: pointer;
-    padding: .4em;
-    width: 2.1em;
+    padding: .6em;
+    width: 2.5em;
     &:before {
         content: '\2715';
         line-height: 0;
+    }
+}
+.button--filter {
+    padding-left: .7em;
+    &:before {
+        content: '\2715';
+        line-height: 0;
+        margin-right: .4em;
     }
 }
 $calendar-font-weight: .94em;
@@ -97,7 +120,7 @@ table.calendar {
     float: right;
     font-size: .75em;
     line-height: normal;
-    margin: 1em;
+    margin: .8em 1em 0;
     width: 80%;
 }
 //

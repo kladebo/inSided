@@ -85,7 +85,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         button = document.createElement('button');
         div.appendChild(button);
-        button.className = 'button button--cancel';
+        button.className = 'button button--cancel button--minimum-padding';
         button.textContent = 'Cancel';
 
         document.getElementById('search').appendChild(frag);

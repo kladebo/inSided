@@ -5,7 +5,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
 
     var createSelect,
         disableSelect,
-        optionClicked,
+        //        optionClicked,
         createOptions,
         createOptionGroups,
         multipleMenu,
@@ -21,9 +21,11 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         item.removeAttribute('tabIndex');
     };
 
-    optionClicked = function (item) {
-        helper.returnParent(item, 'div').querySelector('span').textContent = item.textContent;
-    };
+    //    optionClicked = function (item) {
+    //        helper.returnParent(item, 'div').querySelector('span').textContent = item.textContent;
+    //        
+    //        item.classList.toggle('w-select__item-multiple--active');
+    //    };
 
     createOptions = function (options, multiple) {
         var frag = document.createDocumentFragment(),
@@ -35,6 +37,16 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             li.id = option.id;
             li.className = multiple ? 'w-select__item-multiple' : 'w-select__item';
             li.setAttribute('data-value', option.value);
+
+            if (multiple) {
+                input = document.createElement('input');
+                li.appendChild(input);
+                input.type = 'checkbox';
+                input.className = 'w-select__input';
+                input.addEventListener('mousedown', function (event) {
+                    event.preventDefault();
+                });
+            }
 
             li.appendChild(document.createTextNode(option.text));
         });
@@ -118,11 +130,13 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             ul.querySelector('span#select-all').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.add('w-select__item-multiple--active');
+                    li.querySelector('.w-select__input').checked = true;
                 });
             });
             ul.querySelector('span#select-none').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.remove('w-select__item-multiple--active');
+                    li.querySelector('.w-select__input').checked = false;
                 });
             });
             ul.addEventListener('click', function (event) {
@@ -189,6 +203,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         helper.forEach(ul.querySelectorAll('li'), function (li) {
             li.addEventListener('click', (function (item) {
                 return function (event) {
+                    var checkbox;
                     event.cancelBubble = true;
                     if (event.stopPropagation) {
                         event.stopPropagation();
@@ -202,6 +217,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
                         hideDropDown(ul);
                     } else {
                         item.classList.toggle('w-select__item-multiple--active');
+                        checkbox = item.querySelector('.w-select__input');
+                        checkbox.checked = (item.className.indexOf('w-select__item-multiple--active') >= 0) ? true : false;
                     }
                 };
             }(li)));
