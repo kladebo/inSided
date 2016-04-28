@@ -20,22 +20,19 @@ html {
 body {
     background-color: white;
 }
-header{
-//    height: 50px;
-//    left: 0;
-//    position: absolute;
-//    right: 0;
-//    top: 0;
-}
-.page{
+header {}
+.page {
     position: relative;
 }
 .header {
-    background: $primary-text-color;
+    background: black;
     height: 50px;
 }
+.header__logo {
+    margin: .8em;
+}
 main {
-    margin-top: 2em;
+    margin-top: 1.2em;
     padding-bottom: 5em;
     margin-left: 250px;
 }

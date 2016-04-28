@@ -4,12 +4,104 @@
 
 @import 'a-config';
 
+/*
+ * local vars
+ */
+
+$w-menu-main-padding: .5em;
+$w-menu-sub-padding: .3em 0;
+$w-menu-accent-color: #00ade2;
+
 /* ==========================================================================
    Base-settings:
    ========================================================================== */
 
 .w-menu {}
 
+/* ==========================================================================
+   Level one: 
+   ========================================================================== */
+
+.w-menu__main-menu {
+    @include neutralize-list;
+}
+.w-menu__main-item {
+    font-size: .9em;
+}
+.w-menu__main-item {
+    border-bottom: .1em solid $border-color;
+}
+.w-menu__main-link {
+    border-left: .35em solid transparent;
+    color: $primary-text-color;
+    display: block;
+    padding: $w-menu-main-padding;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Level two: 
+   ========================================================================== */
+
+.w-menu__sub-header {
+    border-bottom: .1em solid $border-color;
+    display: block;
+    padding: $w-menu-main-padding;
+}
+.w-menu__sub-header--active {
+    border-left: .35em solid $w-menu-accent-color;
+}
+.w-menu__sub-menu {
+    @include neutralize-list;
+    margin-top: .5em;
+    margin-bottom: .3em;
+}
+.w-menu__sub-item {
+    font-size: .8em;
+}
+.w-menu__sub-link {
+    color: $primary-text-color;
+    display: block;
+    margin-left: 2.7em;
+    padding: $w-menu-sub-padding;
+    text-decoration: none;
+}
+.w-menu__sub-link--active {
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   Base-icons: 
+   ========================================================================== */
+
+.w-menu__icon {
+    background-image: url(../img/menu--iconstrip.gif);
+    display: inline-block;
+    height: 18px;
+    margin-right: .4em;
+    vertical-align: text-bottom;
+    width: 18px;
+}
+
 /*
- * Widget's modifiers
+ * Modifiers
  */
+
+.w-menu__icon--analytics {
+    background-position: 0 0;
+}
+.w-menu__icon--moderation {
+    background-position: 0 -18px;
+}
+.w-menu__icon--users {
+    background-position: 0 -36px;
+}
+.w-menu__icon--settings {
+    background-position: 0 -54px;
+}
+.w-menu__icon--blog {
+    background-position: 0 -72px;
+}
+.w-menu__icon--onderzoek {
+    background-position: 0 -90px;
+}

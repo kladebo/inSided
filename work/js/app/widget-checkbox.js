@@ -19,7 +19,7 @@ define(['app/print', 'app/helpers'], function (print, helper) {
         
         //input.id = pre;
         input.type = 'checkbox';
-        item.className = 'w-checkbox__checkbox';
+        input.className = 'w-checkbox__checkbox';
         if(item.checked){
             input.checked = true;
         }

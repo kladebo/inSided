@@ -18,7 +18,7 @@ define(function (require) {
     // Load library/vendor modules using
     // full IDs, like:
     require(['domReady!'], function () {
-        menu.create();
+        menu.initMenu();
         searchform.initForm();
     });
 

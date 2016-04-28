@@ -12,8 +12,6 @@ Arial,
 sans-serif;
 $primary-text-color: #333;
 $primary-black: #222;
-$accent-color: #8a2be2;
-$accent-color-two: #ffb100;
 //
 $form-background-color: #F8F8F8;
 $searchform-padding: 0 1.75em .7em;
@@ -31,6 +29,11 @@ $widget-backgound: linear-gradient(#ffffff, #F6F6F6);
    Mixins: 
    ========================================================================== */
 
+@mixin neutralize-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
 /*
  * Mixins for the result-view but could be used globaly

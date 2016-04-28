@@ -1,33 +1,49 @@
 {
-    "menu": [
+    "menuItems": [
         {
-            "text": "Analytics"
+            "text": "Analytics",
+            "link": "analytics",
+            "icon": "icon--analytics"
         },
         {
-            "text": "Moderation"
+            "text": "Moderation",
+            "link": "moderation",
+            "icon": "icon--moderation"
         },
         {
             "text": "Users",
-            "menu-items": [
+            "icon": "icon--users",
+            "menuItems": [
                 {
-                    "text": "Overview"
+                    "text": "Overview",
+                    "link": "overview",
+                    "active": 1
                 },
                 {
-                    "text": "Custom filter"
+                    "text": "Custom filter",
+                    "link": "newfilter"
+
                 },
                 {
-                    "text": "Create new user"
+                    "text": "Create new user",
+                    "link": "newuser"
                 }
             ]
         },
         {
-            "text": "Settings"
+            "text": "Settings",
+            "link": "settings",
+            "icon": "icon--settings"
         },
         {
-            "text": "Blog"
+            "text": "Blog",
+            "link": "blog",
+            "icon": "icon--blog"
         },
         {
-            "text": "Onderzoek"
+            "text": "Onderzoek",
+            "link": "onderzoek",
+            "icon": "icon--onderzoek"
         }
     ]
 }
