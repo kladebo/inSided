@@ -4,16 +4,6 @@
 
 @import 'a-config';
 @import 'boilerplate';
-//
-$button-bgcolor--add: #a0cc41;
-$button-border-color--add: #78a81e;
-$button-text-color--accent: #1BADF6;
-$button-bgcolor--accent: #28bdf5;
-$button-border-color--accent: #1797c6;
-$button-color--cancel: #d85f4a;
-$button-text-color--remove: #a9402a;
-$button-bgcolor--remove: #e07561;
-$button-border-color--remove: #cc5841;
 
 /* ==========================================================================
    Base-style: apply some base setttings to the html
@@ -37,6 +27,25 @@ main {
 /* ==========================================================================
    Buttons: 
    ========================================================================== */
+
+
+/*
+ * Button-vars
+ */
+
+$button-bgcolor--add: #a0cc41;
+$button-border-color--add: #78a81e;
+$button-text-color--accent: #1BADF6;
+$button-bgcolor--accent: #28bdf5;
+$button-border-color--accent: #1797c6;
+$button-color--cancel: #d85f4a;
+$button-text-color--remove: #a9402a;
+$button-bgcolor--remove: #e07561;
+$button-border-color--remove: #cc5841;
+
+/*
+ * Button-definition
+ */
 
 .button {
     background: $widget-backgound;

@@ -4,15 +4,6 @@
 
 @import 'a-config';
 
-/*
- * Mixins for the result-view
- */
-
-@mixin fifty-percent {
-    display: inline-block;
-    max-width: 50%;
-}
-
 /* ==========================================================================
    Base-settings: see also: layout.scss
    ========================================================================== */
