@@ -4,9 +4,9 @@
 
 @import 'a-config';
 
-/*
- * Widget's base settings
- */
+/* ==========================================================================
+   Base-settings:
+   ========================================================================== */
 
 .w-select {
     @include widget-base;
@@ -34,9 +34,9 @@
     cursor: not-allowed;
 }
 
-/*
- * Value-box settings include extra padding on the right for the :after
- */
+/* ==========================================================================
+   Value-box: the padding-right is for the :after
+   ========================================================================== */
 
 .w-select__value {
     display: block;
@@ -54,9 +54,9 @@
     }
 }
 
-/*
- * Dropdown. Modify margin-top for float-effect 
- */
+/* ==========================================================================
+   Dropdown: modify margin-top for float-effect
+   ========================================================================== */
 
 .w-select__dropdown {
     background: $widget-dropdown-bgcolor;
@@ -98,6 +98,11 @@
     margin-left: 1em;
 }
 
+/* ==========================================================================
+   Select-items: these are the clickable items within the dropdown menu
+   ========================================================================== */
+
+
 /*
  * there can be grouping of items 
  */
@@ -121,7 +126,9 @@
 .w-select__item--active {
     background: $widget-focus-color;
 }
-.w-select__item-multiple--active {}
+.w-select__item-multiple--active {
+    background: transparent;
+}
 .w-select__item:hover,
 .w-select__item-multiple:hover {
     background: lighten($widget-focus-color, 20);

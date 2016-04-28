@@ -13,17 +13,17 @@
     max-width: 50%;
 }
 
-/*
- * Main class
- */
+/* ==========================================================================
+   Base-settings: see also: layout.scss
+   ========================================================================== */
 
 .result {
     //background: $form-background-color;
 }
 
-/*
- * All Elements to build the result table
- */
+/* ==========================================================================
+   Table: to build the result-view
+   ========================================================================== */
 
 .result__table {
     width: 100%;
@@ -34,6 +34,11 @@
     padding: 1.2em .7em 1.1em;
     white-space: nowrap;
 }
+
+/*
+ * Modifiers
+ */
+
 .result__table-cel--center {
     text-align: center;
 }
@@ -41,9 +46,9 @@
     text-align: right;
 }
 
-/*
- * The header Row and Cel's have different looks
- */
+/* ==========================================================================
+   Table Header: row and cels differ from the body
+   ========================================================================== */
 
 .result__table-headerrow {
     border: $border;
@@ -53,13 +58,18 @@
     padding: 1.1em .6em .9em;
     white-space: nowrap;
 }
+
+/*
+ * Modifiers
+ */
+
 .result__table-header-cel--user {
     text-align: left;
 }
 
-/*
- * These rows hold the actual result data
- */
+/* ==========================================================================
+   Table Body: these rows and cels hold the actual result data
+   ========================================================================== */
 
 .result__table-row {
     background: white;
@@ -77,9 +87,9 @@
     }
 }
 
-/*
- * Admin row shows on selection
- */
+/* ==========================================================================
+   Table Admin: cel holds the admin gui
+   ========================================================================== */
 
 .result__table-adminrow {
     background: $form-background-color;
@@ -123,9 +133,9 @@
     //margin-right: .2em;
 }
 
-/*
- * the main layout for the resultview area header/body/footer
- */
+/* ==========================================================================
+   Main wrappers: result-view area header/body/footer
+   ========================================================================== */
 
 .result__header-wrapper {}
 .result__body-wrapper {
@@ -133,21 +143,26 @@
 }
 .result__footer-wrapper {}
 
-/*
- * filter-area above the resultview
- */
+/* ==========================================================================
+   Filter wrapper: above the resultview
+   ========================================================================== */
 
 .result__filter-wrapper {
     @include fifty-percent;
 }
+
+/*
+ * holds the + sign to divide the buttons
+ */
+
 .result__filterbutton-divider {
     display: inline-block;
     margin: 0 .5em 0 .3em;
 }
 
-/*
- * settings-area above/below the resultview
- */
+/* ==========================================================================
+   Settings wrapper: above AND below the resultview
+   ========================================================================== */
 
 .result__settings-wrapper {
     @include fifty-percent;
@@ -156,7 +171,7 @@
 }
 
 /*
- * holds navigation
+ * holds result navigation
  */
 
 .result__navigation {
@@ -173,7 +188,7 @@
 }
 
 /*
- * holds paging
+ * holds result paging
  */
 
 .result__paging {

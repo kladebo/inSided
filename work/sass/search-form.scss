@@ -6,9 +6,9 @@
 //
 $searchform-padding: 0 1.75em .7em;
 
-/*
- * Element base settings
- */
+/* ==========================================================================
+   Base-settings: see also: layout.scss
+   ========================================================================== */
 
 .search {
     background-color: $form-background-color;
@@ -16,7 +16,7 @@ $searchform-padding: 0 1.75em .7em;
 }
 
 /*
- * to divide the different areas of the form
+ * Modifier for showing the bottom-border on an area
  */
 
 .search--border-bottom {
@@ -24,7 +24,7 @@ $searchform-padding: 0 1.75em .7em;
 }
 
 /*
- * Header for the different areas of the form
+ * Header for the different areas of the searchform
  */
 
 .search__header {
@@ -33,9 +33,9 @@ $searchform-padding: 0 1.75em .7em;
     margin-top: 1.6em;
 }
 
-/*
- * Filter main wrapper 
- */
+/* ==========================================================================
+   Filter-wrapper: holds the rows for the filter section
+   ========================================================================== */
 
 .search__filter-wrapper {
     padding: $searchform-padding;
@@ -43,7 +43,7 @@ $searchform-padding: 0 1.75em .7em;
 }
 
 /*
- * Filter rows and theys col's 
+ * Filter rows and cols 
  */
 
 .search__filter-row {
@@ -62,18 +62,18 @@ $searchform-padding: 0 1.75em .7em;
     min-width: auto;
 }
 
-/*
- * Add filter wrapper
- */
+/* ==========================================================================
+   Addrow-wrapper: holds the button to add a row
+   ========================================================================== */
 
 .search__addrow-wrapper {
     padding: $searchform-padding;
     padding-bottom: 1.4em;
 }
 
-/*
- * Filter columns wrapper
- */
+/* ==========================================================================
+   Column-wrapper: holds the two collumns for the checkboxes
+   ========================================================================== */
 
 .search__column-wrapper {
     padding: $searchform-padding;
@@ -86,9 +86,9 @@ $searchform-padding: 0 1.75em .7em;
     width: 50%;
 }
 
-/*
- * Submitform wrapper
- */
+/* ==========================================================================
+   Submit-wrapper: holds the submit button
+   ========================================================================== */
 
 .search__submit-wrapper {
     padding: $searchform-padding;
