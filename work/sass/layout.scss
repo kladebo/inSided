@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    #SECTION-LAYOUT
+\*------------------------------------*/
+
 @import 'a-config';
 @import 'boilerplate';
 //
@@ -10,6 +14,11 @@ $button-color--cancel: #d85f4a;
 $button-text-color--remove: #a9402a;
 $button-bgcolor--remove: #e07561;
 $button-border-color--remove: #cc5841;
+
+/* ==========================================================================
+   Base-style: apply some base setttings to the html
+   ========================================================================== */
+
 html {
     color: $primary-text-color;
     font-family: $font-stack;
@@ -24,6 +33,11 @@ body {
 main {
     margin-bottom: 10em;
 }
+
+/* ==========================================================================
+   Buttons: 
+   ========================================================================== */
+
 .button {
     background: $widget-backgound;
     border: $border;
@@ -37,6 +51,11 @@ main {
 .button:disabled {
     color: $widget-disabled-color;
 }
+
+/*
+ * Button-class modifiers
+ */
+
 .button--add {
     background: linear-gradient($button-bgcolor--add, darken($button-bgcolor--add, 6));
     border: .1em solid $button-border-color--add;
@@ -94,6 +113,11 @@ main {
         margin-right: .4em;
     }
 }
+
+/* ==========================================================================
+   Calendar: overrule some base settings
+   ========================================================================== */
+
 $calendar-font-weight: .94em;
 table.calendar {
     border: $border;
@@ -115,6 +139,11 @@ table.calendar {
         display: none;
     }
 }
+
+/* ==========================================================================
+   Layout: 
+   ========================================================================== */
+
 .result,
 .search {
     float: right;
@@ -123,7 +152,11 @@ table.calendar {
     margin: .8em 1em 0;
     width: 80%;
 }
-//
+
+/* ==========================================================================
+   Includes: imports othes scss files
+   ========================================================================== */
+
 @import 'search-form';
 @import 'search-result';
 @import 'widget-checkbox';

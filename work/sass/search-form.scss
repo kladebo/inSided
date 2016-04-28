@@ -5,45 +5,78 @@
 @import 'a-config';
 //
 $searchform-padding: 0 1.75em .7em;
-//
+
+/*
+ * Element base settings
+ */
+
 .search {
     background-color: $form-background-color;
     border: $border;
 }
-.search--border {
+
+/*
+ * to divide the different areas of the form
+ */
+
+.search--border-bottom {
     border-bottom: $border;
 }
+
+/*
+ * Header for the different areas of the form
+ */
+
 .search__header {
     font-weight: bold;
     margin-bottom: .5em;
     margin-top: 1.6em;
 }
-.search__filter {
+
+/*
+ * Filter main wrapper 
+ */
+
+.search__filter-wrapper {
     padding: $searchform-padding;
     padding-bottom: .3em;
 }
-.search__add-row {
-    padding: $searchform-padding;
-    padding-bottom: 1.4em;
-}
-.search__columns {
-    //vertical-align: top;
-    padding: $searchform-padding;
-}
-.search__row {
+
+/*
+ * Filter rows and theys col's 
+ */
+
+.search__filter-row {
     margin-bottom: .6em;
 }
-.search__col {
+.search__filter-col {
     display: inline-block;
     //width: 25%;
     min-width: 200px;
     vertical-align: top;
 }
-.search__col + .search__col {
+.search__filter-col + .search__filter-col {
     padding-left: .3em;
 }
-.search__col:last-child {
+.search__filter-col:last-child {
     min-width: auto;
+}
+
+/*
+ * Add filter wrapper
+ */
+
+.search__addrow-wrapper {
+    padding: $searchform-padding;
+    padding-bottom: 1.4em;
+}
+
+/*
+ * Filter columns wrapper
+ */
+
+.search__column-wrapper {
+    padding: $searchform-padding;
 }
 .search__column {
     columns: 3;
@@ -52,7 +85,12 @@ $searchform-padding: 0 1.75em .7em;
     vertical-align: top;
     width: 50%;
 }
-.search__submit {
+
+/*
+ * Submitform wrapper
+ */
+
+.search__submit-wrapper {
     padding: $searchform-padding;
     padding-top: .7em;
 }

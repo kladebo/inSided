@@ -3,14 +3,28 @@
 \*------------------------------------*/
 
 @import 'a-config';
-//
-@mixin iets {
+
+/*
+ * Mixins for the result-view
+ */
+
+@mixin fifty-percent {
     display: inline-block;
     max-width: 50%;
 }
+
+/*
+ * Main class
+ */
+
 .result {
     //background: $form-background-color;
 }
+
+/*
+ * All Elements to build the result table
+ */
+
 .result__table {
     width: 100%;
     border-collapse: collapse;
@@ -26,7 +40,11 @@
 .result__table-cel--right {
     text-align: right;
 }
-.result__table-cel--username {}
+
+/*
+ * The header Row and Cel's have different looks
+ */
+
 .result__table-headerrow {
     border: $border;
     background: $form-background-color;
@@ -38,10 +56,15 @@
 .result__table-header-cel--user {
     text-align: left;
 }
+
+/*
+ * These rows hold the actual result data
+ */
+
 .result__table-row {
     background: white;
     &:nth-child(odd) {
-        background: rgba($primary-black, .01);
+        background: $form-background-color;
     }
     &.active {
         background: #ebf8fe;
@@ -53,10 +76,32 @@
         background: lighten($widget-focus-color, 30);
     }
 }
+
+/*
+ * Admin row shows on selection
+ */
+
+.result__table-adminrow {
+    background: $form-background-color;
+    border: $border;
+}
+.result__table-admin-cel {
+    padding: .6em;
+    padding-top: .8em;
+}
+
+/*
+ * Checkbox for activating the row
+ */
+
 .result__checkbox {
     margin-right: .7em;
-    //    vertical-align: text-top;
 }
+
+/*
+ * the username within the table has her own link
+ */
+
 .result__userlink {
     color: $primary-text-color;
     display: inline-block;
@@ -77,31 +122,46 @@
     margin-top: .5em;
     //margin-right: .2em;
 }
+
+/*
+ * the main layout for the resultview area header/body/footer
+ */
+
 .result__header-wrapper {}
 .result__body-wrapper {
     margin: .5em 0;
 }
 .result__footer-wrapper {}
-.result__filter {
-    @include iets;
-//    background-color: silver;
+
+/*
+ * filter-area above the resultview
+ */
+
+.result__filter-wrapper {
+    @include fifty-percent;
 }
 .result__filterbutton-divider {
     display: inline-block;
     margin: 0 .5em 0 .3em;
 }
-.result__table-adminrow {
-    background: $form-background-color;
-    border: $border;
-}
-.result__table-admin-cel {
-    padding: .6em;
-    padding-top: .8em;
-}
-.result__navigation {
-    @include iets;
+
+/*
+ * settings-area above/below the resultview
+ */
+
+.result__settings-wrapper {
+    @include fifty-percent;
     text-align: right;
     float: right;
+}
+
+/*
+ * holds navigation
+ */
+
+.result__navigation {
+    display: inline-block;
+    vertical-align: bottom;
 }
 .result__navigation--label {
     display: inline-block;
@@ -110,6 +170,16 @@
 .result__navigation--divider {
     display: inline-block;
     padding: 0;
+}
+
+/*
+ * holds paging
+ */
+
+.result__paging {
+    display: inline-block;
+    margin-left: .6em;
+    vertical-align: bottom;
 }
 .result__admin-settings {
     float: left;

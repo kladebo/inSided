@@ -20,23 +20,23 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__col';
+        div.className = 'search__filter-col';
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__col';
+        div.className = 'search__filter-col';
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__col';
+        div.className = 'search__filter-col';
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__col';
+        div.className = 'search__filter-col';
 
         div = document.createElement('div');
         div.appendChild(frag);
-        div.className = 'search__row';
+        div.className = 'search__filter-row';
 
         return div;
     };
@@ -55,13 +55,13 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__filter';
+        div.className = 'search__filter-wrapper';
         div.appendChild(createHeader('Advanced search'));
         div.appendChild(insertFilterRow());
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__add-row search--border';
+        div.className = 'search__addrow-wrapper search--border-bottom';
         button = document.createElement('button');
         div.appendChild(button);
         button.id = 'addRow';
@@ -70,13 +70,13 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__columns search--border';
+        div.className = 'search__column-wrapper search--border-bottom';
         div.appendChild(createHeader('Columns'));
         div.appendChild(insertCheckboxes());
 
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'search__submit';
+        div.className = 'search__submit-wrapper';
 
         button = document.createElement('button');
         div.appendChild(button);
@@ -93,7 +93,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
 
     insertFilterRow = function () {
         var row = createRow(),
-            cols = row.querySelectorAll('.search__col'),
+            cols = row.querySelectorAll('.search__filter-col'),
             firstSelect,
             secondSelect;
 
@@ -113,7 +113,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
         secondSelect.classList.add('w-select--wide');
         wSelect.disableSelect(secondSelect);
 
-        row.querySelectorAll('.search__col')[1].appendChild(secondSelect);
+        cols[1].appendChild(secondSelect);
 
         helper.forEach(firstSelect.querySelectorAll('li'), function (li, index) {
             li.addEventListener('click', function () {
@@ -167,8 +167,8 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
                             updateDeleteButton(secondSelect, button);
                         });
                     });
-                    if (secondSelect.querySelector('.w-select__dropdown-menu')) {
-                        helper.forEach(secondSelect.querySelectorAll('.w-select__dropdown-menu-item'), function (span) {
+                    if (secondSelect.querySelector('.w-select__dropdown-header')) {
+                        helper.forEach(secondSelect.querySelectorAll('.w-select__dropdown-header-link'), function (span) {
                             span.addEventListener('click', function () {
                                 updateDeleteButton(secondSelect, button);
                             }, true);
@@ -257,7 +257,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
             createForm();
 
             document.getElementById('addRow').addEventListener('click', function () {
-                document.querySelector('.search__filter').appendChild(insertFilterRow());
+                document.querySelector('.search__filter-wrapper').appendChild(insertFilterRow());
             });
 
         }, function (error) {

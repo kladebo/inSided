@@ -116,7 +116,6 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
                 // specific layout for username
                 if (item.field === 'username') {
-                    td.classList.add('result__table-cel--username');
                     input = document.createElement('input');
                     td.appendChild(input);
                     input.className = 'result__checkbox';
@@ -174,13 +173,14 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
     createNavigation = function () {
         var frag = document.createDocumentFragment(),
-            div = document.createElement('div'),
+            div,
             button,
             span,
             input,
             select,
             data,
-            divider;
+            divider,
+            wrapper;
 
         divider = function () {
             var span = document.createElement('span');
@@ -212,7 +212,12 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             }
         };
 
-        frag.appendChild(div);
+        wrapper = document.createElement('div');
+        frag.appendChild(wrapper);
+        wrapper.className = 'result__settings-wrapper';
+        
+        div = document.createElement('div');
+        wrapper.appendChild(div);
         div.className = 'result__navigation';
 
         button = document.createElement('button');
@@ -237,8 +242,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         input = wInput.createInput({});
         div.appendChild(input);
         input.querySelector('input').value = 1;
-        input.classList.add('small');
-        input.querySelector('input').style.textAlign = 'center';
+        input.className = 'w-input w-input--xxsmall';
         input.querySelector('input').setAttribute('maxlength', 2);
 
         span = document.createElement('span');
@@ -258,9 +262,12 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         button.textContent = 'Last';
         button.className = 'button button--transparent button--minimum-padding button--accent-text';
 
+        div = document.createElement('div');
+        wrapper.appendChild(div);
+        div.className = 'result__paging';
+        
         select = wSelect.createSelect(data.select);
         div.appendChild(select);
-        select.style.marginLeft = '.6em';
 
         return frag;
     };
@@ -360,7 +367,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             plus;
 
         frag.appendChild(div);
-        div.className = 'result__filter';
+        div.className = 'result__filter-wrapper';
         
         button = document.createElement('button');
         div.appendChild(button);

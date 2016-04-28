@@ -15,10 +15,10 @@ define(['app/print', 'app/helpers'], function (print, helper) {
         input.type = 'text';
         input.setAttribute('autocomplete', 'off');
         input.addEventListener('focus', function () {
-            div.classList.add('focus');
+            div.classList.add('w-input--focus');
         });
         input.addEventListener('blur', function () {
-            div.classList.remove('focus');
+            div.classList.remove('w-input--focus');
         });
 
         // attach calendar

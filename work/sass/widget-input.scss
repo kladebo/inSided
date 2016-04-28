@@ -1,14 +1,15 @@
+/*------------------------------------*\
+    #SECTION-WIDGET-INPUT
+\*------------------------------------*/
+
 @import 'a-config';
-//
+
+/*
+ * Widget's base settings
+ */
+
 .w-input {
     @include widget-base;
-    //padding: .4em 1em .4em .4em;
-    &.small {
-        width: 2.6em;
-    }
-    &.focus{
-        @include widget-focus;
-    }
     input {
         background-color: transparent;
         border: 0;
@@ -16,6 +17,20 @@
         width: 100%;
     }
 }
-.w-input--wide{
+
+/*
+ * Widget's modifiers
+ */
+
+.w-input--focus {
+    @include widget-focus;
+}
+.w-input--xxsmall {
+    width: 2.6em;
+    input {
+        text-align: center;
+    }
+}
+.w-input--wide {
     width: 100%;
 }

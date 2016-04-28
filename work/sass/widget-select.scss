@@ -3,7 +3,11 @@
 \*------------------------------------*/
 
 @import 'a-config';
-//
+
+/*
+ * Widget's base settings
+ */
+
 .w-select {
     @include widget-base;
     cursor: default;
@@ -11,6 +15,11 @@
 .w-select:focus {
     @include widget-focus;
 }
+
+/*
+ * Widget's modifiers
+ */
+
 .w-select--small {
     margin-right: .4em;
     width: 11.6em;
@@ -24,9 +33,12 @@
     box-shadow: 0;
     cursor: not-allowed;
 }
+
+/*
+ * Value-box settings include extra padding on the right for the :after
+ */
+
 .w-select__value {
-    //    border: $border;
-    //    border-radius: .2em;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -41,6 +53,11 @@
         top: .1em;
     }
 }
+
+/*
+ * Dropdown. Modify margin-top for float-effect 
+ */
+
 .w-select__dropdown {
     background: $widget-dropdown-bgcolor;
     border: .1em solid rgba($primary-black, .3);
@@ -58,18 +75,44 @@
     min-width: 100%;
     z-index: 2;
 }
-.w-select__dropdown-menu {
+
+/*
+ * Dropdown-header. MultiSelect can hold a header 
+ */
+
+.w-select__dropdown-header {
     padding: 0 .4em .6em;
 }
-.w-select__dropdown-menu-item {
+
+/*
+ * The links within the header 
+ */
+
+.w-select__dropdown-header-link {
     color: $widget-focus-color;
     display: inline-block;
     text-decoration: underline;
     cursor: pointer;
 }
-.w-select__dropdown-menu-item + .w-select__dropdown-menu-item {
+.w-select__dropdown-header-link + .w-select__dropdown-header-link {
     margin-left: 1em;
 }
+
+/*
+ * there can be grouping of items 
+ */
+
+.w-select__optiongroup {
+    display: block;
+    font-weight: bold;
+    padding: .4em;
+    padding-top: .5em;
+}
+
+/*
+ * These are the items within the dropdown menu 
+ */
+
 .w-select__item,
 .w-select__item-multiple {
     padding: .2em .3em;
@@ -83,21 +126,12 @@
 .w-select__item-multiple:hover {
     background: lighten($widget-focus-color, 20);
 }
-.w-select__input {
+
+/*
+ * MultiSelect items are holding a checkbox 
+ */
+
+.w-select__item-checkbox {
     vertical-align: text-bottom;
     margin-right: .4em;
 }
-.w-select__item-header {
-    display: block;
-    font-weight: bold;
-    padding: .4em;
-    padding-top: .5em;
-}
-//.w-select__item-multiple:before {
-//    content: '\2610';
-//    font-size: 1em;
-//    margin-right: .4em;
-//}
-//.w-select__item-multiple--active:before {
-//    content: '\2611';
-//}

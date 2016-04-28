@@ -13,15 +13,16 @@ define(['app/print', 'app/helpers'], function (print, helper) {
         div.className = 'w-checkbox';
         div.appendChild(label);
         label.appendChild(input);
+        label.className = 'w-checkbox__label';
         label.appendChild(document.createTextNode(item.text));
         //label.setAttribute('for', pre);
         
         //input.id = pre;
         input.type = 'checkbox';
+        item.className = 'w-checkbox__checkbox';
         if(item.checked){
             input.checked = true;
         }
-        input.setAttribute('autocomplete', 'off');
         return div;
     };
 

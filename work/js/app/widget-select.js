@@ -42,7 +42,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
                 input = document.createElement('input');
                 li.appendChild(input);
                 input.type = 'checkbox';
-                input.className = 'w-select__input';
+                input.className = 'w-select__item-checkbox';
                 input.addEventListener('mousedown', function (event) {
                     event.preventDefault();
                 });
@@ -59,7 +59,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
         helper.forEach(groups, function (group) {
             span = document.createElement('span');
             frag.appendChild(span);
-            span.className = 'w-select__item-header';
+            span.className = 'w-select__optiongroup';
             span.textContent = group.text;
             frag.appendChild(createOptions(group.options, multiple));
         });
@@ -72,20 +72,20 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             span;
         div = document.createElement('div');
         frag.appendChild(div);
-        div.className = 'w-select__dropdown-menu';
+        div.className = 'w-select__dropdown-header';
         //check
         span = document.createElement('span');
         div.appendChild(span);
         span.textContent = 'Check all';
         span.id = 'select-all';
-        span.className = 'w-select__dropdown-menu-item';
+        span.className = 'w-select__dropdown-header-link';
 
         // uncheck
         span = document.createElement('span');
         div.appendChild(span);
         span.textContent = 'Uncheck all';
         span.id = 'select-none';
-        span.className = 'w-select__dropdown-menu-item';
+        span.className = 'w-select__dropdown-header-link';
         return frag;
     };
 
@@ -130,13 +130,13 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
             ul.querySelector('span#select-all').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.add('w-select__item-multiple--active');
-                    li.querySelector('.w-select__input').checked = true;
+                    li.querySelector('.w-select__item-checkbox').checked = true;
                 });
             });
             ul.querySelector('span#select-none').addEventListener('click', function (event) {
                 helper.forEach(ul.querySelectorAll('li'), function (li) {
                     li.classList.remove('w-select__item-multiple--active');
-                    li.querySelector('.w-select__input').checked = false;
+                    li.querySelector('.w-select__item-checkbox').checked = false;
                 });
             });
             ul.addEventListener('click', function (event) {
@@ -217,7 +217,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
                         hideDropDown(ul);
                     } else {
                         item.classList.toggle('w-select__item-multiple--active');
-                        checkbox = item.querySelector('.w-select__input');
+                        checkbox = item.querySelector('.w-select__item-checkbox');
                         checkbox.checked = (item.className.indexOf('w-select__item-multiple--active') >= 0) ? true : false;
                     }
                 };
