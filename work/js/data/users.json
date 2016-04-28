@@ -41,7 +41,7 @@
         }, {
         "username": "Bart Pineapple",
         "comments": 37,
-        "topics": 7,
+        "topics": "-",
         "usergroup": "Registrered user",
         "regdate": "20-mar-11 12:00",
         "lastlogin": "15-may-12 17:34",
@@ -68,7 +68,7 @@
         }, {
         "username": "Dolf Dreamer",
         "comments": 282,
-        "topics": 1,
+        "topics": "-",
         "usergroup": "Super-user",
         "regdate": "18-jan-11 12:08",
         "lastlogin": "16-aug-12 13:12",
@@ -77,7 +77,7 @@
         }, {
         "username": "Edgar Enders",
         "comments": 37,
-        "topics": 5,
+        "topics": "-",
         "usergroup": "Registrered user",
         "regdate": "12-dec-11 08:55",
         "lastlogin": "05-april-12 08:08",
@@ -104,7 +104,7 @@
         }, {
         "username": "John Doe",
         "comments": 111,
-        "topics": 6,
+        "topics": "-",
         "usergroup": "Registrered user",
         "regdate": "30-jan-12 21:00",
         "lastlogin": "13-aug-12 22:10",

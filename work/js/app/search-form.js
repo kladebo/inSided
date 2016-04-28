@@ -233,15 +233,15 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox', 'app/widget-select', 
             - show/hide button--remove-row when value is changed
         */
         if (value.join('') !== '') {
-            button.classList.remove('hidden');
+            button.classList.remove('button--hidden');
         } else {
-            button.classList.add('hidden');
+            button.classList.add('button--hidden');
         }
     };
 
     insertDeleteButton = function (row) {
         var button = document.createElement('button');
-        button.className = 'button button--remove-row hidden';
+        button.className = 'button button--remove-row button--hidden';
         button.addEventListener('click', function () {
             removeCalendar(row);
 

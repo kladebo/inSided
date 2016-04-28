@@ -41,9 +41,9 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
             }
         });
         if (counter > -1) {
-            wrapper.classList.remove('invisible');
+            wrapper.classList.remove('result__table-adminrow--invisible');
         } else {
-            wrapper.classList.add('invisible');
+            wrapper.classList.add('result__table-adminrow--invisible');
         }
 
     };
@@ -62,16 +62,17 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
         tr.className = 'result__table-headerrow';
         helper.forEach(userData.headers, function (item) {
-            var input;
+            var input,
+                span;
             th = document.createElement('th');
             tr.appendChild(th);
             th.className = 'result__table-header-cel';
             if (item.field === 'username') {
                 th.classList.add('result__table-header-cel--user');
-                
+
                 input = document.createElement('input');
                 th.appendChild(input);
-                
+
                 input.type = 'checkbox';
                 input.className = 'result__checkbox';
                 input.addEventListener('change', function () {
@@ -84,8 +85,13 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                     });
 
                 });
+                span = document.createElement('span');
+                th.appendChild(span);
+                span.className = 'result__header--link';
+                span.textContent = item.text;
+            } else {
+                th.appendChild(document.createTextNode(item.text));
             }
-            th.appendChild(document.createTextNode(item.text));
         });
         return tr;
     };
@@ -125,17 +131,17 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
                     a.href = '#';
                     a.className = 'result__userlink';
                     td.appendChild(a);
-                    
+
                     img = document.createElement('img');
                     a.appendChild(img);
                     img.src = 'img/icon--new-window.gif';
                     img.className = 'result__userlink-icon';
-                    
+
                     if (user.img) {
                         a.appendChild(createAvatar(user.img));
                         a.appendChild(document.createTextNode(user[item.field]));
                     }
-                    
+
                     a.addEventListener('click', function (event) {
                         event.preventDefault();
                         event.cancelBubble = true;
@@ -161,7 +167,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         */
         tr = document.createElement('tr');
         frag.appendChild(tr);
-        tr.className = 'result__table-adminrow invisible';
+        tr.className = 'result__table-adminrow result__table-adminrow--invisible';
         td = document.createElement('td');
         tr.appendChild(td);
         td.className = 'result__table-admin-cel';
@@ -215,7 +221,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         wrapper = document.createElement('div');
         frag.appendChild(wrapper);
         wrapper.className = 'result__settings-wrapper';
-        
+
         div = document.createElement('div');
         wrapper.appendChild(div);
         div.className = 'result__navigation';
@@ -265,7 +271,7 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
         div = document.createElement('div');
         wrapper.appendChild(div);
         div.className = 'result__paging';
-        
+
         select = wSelect.createSelect(data.select);
         div.appendChild(select);
 
@@ -368,32 +374,32 @@ define(['app/print', 'app/helpers', 'app/widget-select', 'app/widget-input'], fu
 
         frag.appendChild(div);
         div.className = 'result__filter-wrapper';
-        
+
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Category';
         button.className = 'button button--filter';
-        
+
         plus = document.createElement('span');
         div.appendChild(plus);
         plus.textContent = '+';
         plus.className = 'result__filterbutton-divider';
-        
+
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Tags';
         button.className = 'button button--filter';
-        
+
         plus = document.createElement('span');
         div.appendChild(plus);
         plus.textContent = '+';
         plus.className = 'result__filterbutton-divider';
-        
+
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Views';
         button.className = 'button button--filter';
-        
+
         button = document.createElement('button');
         div.appendChild(button);
         button.textContent = 'Clear selection';

@@ -22,7 +22,7 @@
 
 .w-select--small {
     margin-right: .4em;
-    width: 11.6em;
+    width: 12.2em;
 }
 .w-select--wide {
     width: 100%;
@@ -42,7 +42,7 @@
     display: block;
     white-space: nowrap;
     overflow: hidden;
-    padding: .6em 1.6em .6em .8em;
+    padding: .6em 2.4em .6em .8em;
     position: relative;
     text-overflow: ellipsis;
     &:after {
@@ -76,6 +76,9 @@
     z-index: 2;
 }
 
+.w-select__dropdown--hidden{
+    display: none;
+}
 /*
  * Dropdown-header. MultiSelect can hold a header 
  */

@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 @import 'a-config';
-@import 'boilerplate';
+//@import 'boilerplate';
 
 /* ==========================================================================
    Base-style: apply some base setttings to the html
@@ -45,7 +45,9 @@ nav {
     position: absolute;
     width: 200px;
 }
-.nav {}
+img{
+    vertical-align: middle;
+}
 
 /* ==========================================================================
    Buttons: 
@@ -88,6 +90,9 @@ $button-border-color--remove: #cc5841;
  * Button-class modifiers
  */
 
+.button--hidden {
+    display: none;
+}
 .button--add {
     background: linear-gradient($button-bgcolor--add, darken($button-bgcolor--add, 6));
     border: .1em solid $button-border-color--add;

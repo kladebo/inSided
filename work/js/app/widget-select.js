@@ -90,15 +90,15 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
     };
 
     hideDropDown = function (item) {
-        item.classList.add('hidden');
+        item.classList.add('w-select__dropdown--hidden');
     };
 
     showDropDown = function (item) {
-        item.classList.remove('hidden');
+        item.classList.remove('w-select__dropdown--hidden');
     };
 
     toggleDropDown = function (item) {
-        if (item.className.indexOf('hidden') >= 0) {
+        if (item.className.indexOf('w-select__dropdown--hidden') >= 0) {
             showDropDown(item);
         } else {
             hideDropDown(item);
@@ -121,7 +121,7 @@ define(['app/print', 'app/helpers', 'app/widget-checkbox'], function (print, hel
 
         div.appendChild(ul);
         ul.className = 'w-select__dropdown';
-        ul.classList.add('hidden');
+        ul.classList.add('w-select__dropdown--hidden');
         ul.setAttribute('name', item.name);
 
         // insert toggle-all menu when multiple

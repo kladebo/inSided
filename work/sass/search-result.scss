@@ -86,9 +86,23 @@
     background: $form-background-color;
     border: $border;
 }
+.result__table-adminrow--invisible {
+    border-color: transparent;
+    visibility: hidden;
+}
 .result__table-admin-cel {
     padding: .6em;
     padding-top: .8em;
+}
+
+/*
+ * header link has an icon after it
+ */
+
+.result__header--link:after {
+    content: '\25BE';
+    display: inline-block;
+    margin-left: .2em;
 }
 
 /*
@@ -134,7 +148,9 @@
 .result__body-wrapper {
     //margin: .5em 0;
 }
-.result__footer-wrapper {}
+.result__footer-wrapper {
+    margin-top: .8em;
+}
 
 /* ==========================================================================
    Filter wrapper: above the resultview
