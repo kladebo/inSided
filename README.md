@@ -1,7 +1,15 @@
 # inSided
 inSided Coding Test
 
+<h2>Hello Again!</h2>
+
+<p>Many thanks for the hints you gave me about my css! I have added the <i>BEM naming</i> as you mentioned and I am quite happy about the result. It really gives clarity about the classes and their relation. I think there are still some improvents to be made within my files, but for now I am quite happy about the current implementation. I also have added some <i>css guidelines</i>. I found, while searching on the internet, that there were quite a bit around. Finally I looked at the 'boilerplate.css' which I allready was using and incorporated the way they implemented it.</p>
+
+<h3>Global styling</h3>
+<p>I have taken a thorough look at the design. I agree there was a big part missing. I spent a lot of time making it as pixel-perfect as I can. I do know this is a verry important part of front-end design. I have visualy tested it on different browsers. I even took a peek on a mac, to see if it nearly looks like the design you gave me.</p>
+
 <h2>Hello!</h2>
+
 <p>The main goal for me within this project was not to use any html-frameworks. I could easily have been include Bootstrap but I wanted to show how widgets can be made with some simple coding and css. I had a lot of fun with this assignment and I really liked the idea. Unfortunately 'time flies'. Now the time has come to turn this assignment in. I hope you will enjoy reviewing my code and like it!</p>
 
 <h3>Install</h3>
