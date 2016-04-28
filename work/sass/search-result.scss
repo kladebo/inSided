@@ -128,9 +128,11 @@
    Main wrappers: result-view area header/body/footer
    ========================================================================== */
 
-.result__header-wrapper {}
+.result__header-wrapper {
+    margin: .8em 0 .6em;
+}
 .result__body-wrapper {
-    margin: .5em 0;
+    //margin: .5em 0;
 }
 .result__footer-wrapper {}
 

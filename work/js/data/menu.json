@@ -1,0 +1,33 @@
+{
+    "menu": [
+        {
+            "text": "Analytics"
+        },
+        {
+            "text": "Moderation"
+        },
+        {
+            "text": "Users",
+            "menu-items": [
+                {
+                    "text": "Overview"
+                },
+                {
+                    "text": "Custom filter"
+                },
+                {
+                    "text": "Create new user"
+                }
+            ]
+        },
+        {
+            "text": "Settings"
+        },
+        {
+            "text": "Blog"
+        },
+        {
+            "text": "Onderzoek"
+        }
+    ]
+}

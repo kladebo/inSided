@@ -7,7 +7,8 @@ define(function (require) {
     // like:
     var print = require('app/print'),
         helper = require('app/helpers'),
-        searchform = require('app/search-form');
+        searchform = require('app/search-form'),
+        menu = require('app/menu');
 
     if (typeof Promise === "undefined" && Promise.toString().indexOf("[native code]") === -1) {
         // load promise polyfill
@@ -17,6 +18,7 @@ define(function (require) {
     // Load library/vendor modules using
     // full IDs, like:
     require(['domReady!'], function () {
+        menu.create();
         searchform.initForm();
     });
 

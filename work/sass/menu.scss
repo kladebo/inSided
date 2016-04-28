@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #SECTION-WIDGET-CHECKBOX
+    #SECTION-MENU
 \*------------------------------------*/
 
 @import 'a-config';
@@ -8,21 +8,8 @@
    Base-settings:
    ========================================================================== */
 
-.w-checkbox {
-    display: block;
-    margin-bottom: .3em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+.w-menu {}
 
 /*
- * Widget Elements
+ * Widget's modifiers
  */
-
-.w-checkbox__label {
-    white-space: nowrap;
-}
-.w-checkbox__checkbox {
-    margin-right: .3em;
-}

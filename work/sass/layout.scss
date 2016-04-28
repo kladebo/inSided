@@ -20,9 +20,35 @@ html {
 body {
     background-color: white;
 }
-main {
-    margin-bottom: 10em;
+header{
+//    height: 50px;
+//    left: 0;
+//    position: absolute;
+//    right: 0;
+//    top: 0;
 }
+.page{
+    position: relative;
+}
+.header {
+    background: $primary-text-color;
+    height: 50px;
+}
+main {
+    margin-top: 2em;
+    padding-bottom: 5em;
+    margin-left: 250px;
+}
+nav {
+    background: $form-background-color;
+    border-right: .1em solid $border-color;
+    bottom: 0;
+    left: 0;
+    top: 50px;
+    position: absolute;
+    width: 200px;
+}
+.nav {}
 
 /* ==========================================================================
    Buttons: 
@@ -155,17 +181,19 @@ table.calendar {
 
 .result,
 .search {
-    float: right;
+    //float: right;
     font-size: .75em;
     line-height: normal;
-    margin: .8em 1em 0;
-    width: 80%;
+    //margin: .8em 1em 0;
+    //width: 80%;
+    max-width: 940px;
 }
 
 /* ==========================================================================
    Includes: imports othes scss files
    ========================================================================== */
 
+@import 'menu';
 @import 'search-form';
 @import 'search-result';
 @import 'widget-checkbox';

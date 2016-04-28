@@ -57,7 +57,8 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'js/data/searchform.min.json': 'work/js/data/searchform.json',
-                    'js/data/users.min.json': 'work/js/data/users.json'
+                    'js/data/users.min.json': 'work/js/data/users.json',
+                    'js/data/menu.min.json': 'work/js/data/menu.json'
                         //"path/to/another/destination": ["multiple/source/files", "are/supported", "as/an/array"]
                 }
             }
